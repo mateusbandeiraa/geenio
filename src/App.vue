@@ -15,6 +15,7 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
 * {
 	box-sizing: border-box;
 }
