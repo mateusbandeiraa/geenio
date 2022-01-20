@@ -2,7 +2,7 @@ import Question from '../model/Question'
 export const questions = {
   state: () => ({
     currentQuestion: 0,
-    shouldShowCorrectAlternative: false,
+    isShowingCorrectAlternative: false,
     questions: [
       new Question({
         text: "Quantos cocos uma andorinha é capaz de carregar?",
@@ -41,11 +41,11 @@ export const questions = {
 
   mutations: {
     incrementCurrentQuestion(state) {
-      state.shouldShowCorrectAlternative = false;
+      state.isShowingCorrectAlternative = false;
       state.currentQuestion++;
     },
     showCorrectAlternative(state) {
-      state.shouldShowCorrectAlternative = true;
+      state.isShowingCorrectAlternative = true;
     }
   },
 

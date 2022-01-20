@@ -26,19 +26,7 @@ export default {
 			this.question.selectedAlternative = alternativeIndex;
 			setTimeout(() => {
 				this.$store.commit('showCorrectAlternative');
-			}, 1500);
-			// const correctAnswer = this.question.answer;
-			// const selectedAnswer = this.question.alternatives.indexOf(button.text);
-
-			// const didSelectCorrectAnswer = (correctAnswer == selectedAnswer);
-
-			// if(didSelectCorrectAnswer){
-			// 	this.$store.commit('insertCorrectAnswer');
-			// } else {
-			// 	this.$store.commit('insertIncorrectAnswer');
-			// }
-
-			// this.$store.commit('incrementCurrentQuestion');
+			}, 750);
 		},
 	},
 };

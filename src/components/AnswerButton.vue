@@ -35,7 +35,7 @@ export default {
 			);
 		},
 		shouldShowCorrectAlternative() {
-			return this.$store.state.questions.shouldShowCorrectAlternative;
+			return this.$store.state.questions.isShowingCorrectAlternative;
 		},
 	},
 	emits: ["answerSelected"],

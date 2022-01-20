@@ -33,7 +33,7 @@ export default {
 	methods: {
 		shouldShowCorrectAlternative(question) {
 			if (this.currentQuestion == question) {
-				return this.$store.state.questions.shouldShowCorrectAlternative;
+				return this.$store.state.questions.isShowingCorrectAlternative;
 			} else {
 				return true;
 			}
