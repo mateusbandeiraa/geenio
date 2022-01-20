@@ -1,22 +1,21 @@
 <template>
-	<ol>
-		<li value="3" id="question-text">
-			<p>Quantos cocos uma andorinha é capaz de carregar?</p>
-			<div class="answer-block">
-				<answer-button
-					v-for="answerText in ['Uma', 'Duas', 'Três']"
-					:key="answerText"
-					:answerText="answerText"
-				/>
-			</div>
-		</li>
-	</ol>
+	<p id="question-text">{{ question.text }}</p>
+	<div class="answer-block">
+		<answer-button
+			v-for="alternative in question.alternatives"
+			:key="alternative"
+			:text="alternative"
+		/>
+	</div>
 </template>
 
 <script>
 import AnswerButton from "./AnswerButton.vue";
 export default {
 	components: { AnswerButton },
+	props: {
+		question: { type: Object, required: true },
+	},
 };
 </script>
 

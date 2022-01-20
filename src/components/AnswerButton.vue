@@ -1,11 +1,11 @@
 <template>
-	<button>{{ answerText }}</button>
+	<button>{{ text }}</button>
 </template>
 
 <script>
 export default {
 	props: {
-		answerText: { type: String, required: true },
+		text: { type: String, required: true },
 	},
 };
 </script>

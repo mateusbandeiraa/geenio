@@ -1,6 +1,5 @@
 export const score = {
   state: () => ({
-    currentQuestion: 0,
     answers: ['','','','',''],
   }),
 
