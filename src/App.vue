@@ -31,7 +31,7 @@ export default {
 	--incorrect-answer-color: hsl(0, 83%, 52%);
 	--incorrect-answer-border-color: hsl(0, 83%, 32%);
 
-	--default-transition: background 250ms ease-in-out, transform 150ms ease;
+	--default-transition: background 250ms ease-in-out, color 150ms ease-in-out, transform 150ms ease;
 }
 body {
 	font-family: "Exo 2", sans-serif;
