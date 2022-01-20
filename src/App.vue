@@ -15,10 +15,18 @@ export default {
 </script>
 
 <style>
+* {
+  box-sizing: border-box;
+}
 :root{
   --main-bg-color: #031926;
   --main-color: #FFFFFA;
   --main-highlight-color: #F05D5E;
+  
+  --correct-answer-color: hsl(108, 66%, 63%);
+  --correct-answer-border-color: hsl(108, 66%, 32%);
+  --incorrect-answer-color: hsl(0, 83%, 52%);
+  --incorrect-answer-border-color: hsl(0, 83%, 32%);
 }
 body {
   font-family: 'Exo 2', sans-serif;

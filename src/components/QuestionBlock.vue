@@ -25,6 +25,6 @@ export default {
 .answer-block {
     padding-left: 40px;
 	display: grid;
-	grid-row-gap: 16px;
+	row-gap: 16px;
 }
 </style>
