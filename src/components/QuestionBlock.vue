@@ -20,12 +20,20 @@ export default {
 		question() {
 			return this.$store.getters.getCurrentQuestion;
 		},
+		isLastQuestion() {
+			return this.$store.getters.isLastQuestion;
+		},
 	},
 	methods: {
 		handleAnswerSelected(alternativeIndex) {
 			this.question.selectedAlternative = alternativeIndex;
 			setTimeout(() => {
-				this.$store.commit('showCorrectAlternative');
+				this.$store.commit("showCorrectAlternative");
+				if (this.isLastQuestion) {
+					setTimeout(() => {
+						this.$store.commit("finishGame");
+					});
+				}
 			}, 750);
 		},
 	},

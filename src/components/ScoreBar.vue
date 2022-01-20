@@ -43,14 +43,6 @@ export default {
 </script>
 
 <style scoped>
-.score-bar {
-	display: block;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	padding: 16px 0;
-}
 .score-circles-container {
 	/* 5 circles with 32px width + 4 16px gaps between */
 	width: calc((40px * 5) + (16px * 4));

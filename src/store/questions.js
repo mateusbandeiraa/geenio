@@ -1,8 +1,9 @@
-import Question from '../model/Question'
+import Question from "../model/Question";
 export const questions = {
   state: () => ({
     currentQuestion: 0,
     isShowingCorrectAlternative: false,
+    hasGameEnded: false,
     questions: [
       new Question({
         text: "Quantos cocos uma andorinha é capaz de carregar?",
@@ -33,10 +34,10 @@ export const questions = {
   }),
 
   actions: {
-    selectAlternative(context, alternative){
+    selectAlternative(context, alternative) {
       const currentQuestion = context.getters.getCurrentQuestion;
       currentQuestion.selectAlternative = alternative;
-    }
+    },
   },
 
   mutations: {
@@ -46,18 +47,30 @@ export const questions = {
     },
     showCorrectAlternative(state) {
       state.isShowingCorrectAlternative = true;
-    }
+    },
+    finishGame(state) {
+      state.hasGameEnded = true;
+    },
   },
 
   getters: {
     getCurrentQuestion(state) {
       return state.questions[state.currentQuestion];
     },
-    getQuestions(state){
+    getQuestions(state) {
       return state.questions;
     },
-    isLastQuestion(state){
-      return (state.currentQuestion + 1) == state.questions.length;
+    getTotalCorrectAnswers(state) {
+      return state.questions.filter(
+        (question) =>
+          question.isAnswered && question.isSelectedAlternativeCorrect
+      ).length;
+    },
+    isLastQuestion(state) {
+      return state.currentQuestion + 1 == state.questions.length;
+    },
+    hasGameEnded(state){
+      return state.hasGameEnded;
     }
   },
 };

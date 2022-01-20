@@ -1,22 +1,20 @@
 <template>
-	<button @click="goToNextQuestion" v-if="!isLastQuestion">Próxima pergunta →</button>
-	<button v-else>Compartilhar</button>
+	<button @click="goToNextQuestion">Próxima pergunta →</button>
 </template>
 
 <script>
 export default {
-	props: {
-	},
+	props: {},
 	computed: {
 		isLastQuestion() {
 			return this.$store.getters.isLastQuestion;
-		}
+		},
 	},
-    methods: {
-        goToNextQuestion() {
-            this.$store.commit('incrementCurrentQuestion');
-        }
-    }
+	methods: {
+		goToNextQuestion() {
+			this.$store.commit("incrementCurrentQuestion");
+		},
+	},
 };
 </script>
 
