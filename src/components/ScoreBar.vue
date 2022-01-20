@@ -3,11 +3,17 @@
 		<div class="score-circles-container">
 			<span
 				class="score-circle"
-				v-for="i in 5"
-				:key="i"
+				v-for="question in questions"
+				:key="question.text"
 				:class="{
-					correct: answers[i-1] == 'correct',
-					incorrect: answers[i-1] == 'incorrect',
+					correct:
+						shouldShowCorrectAlternative(question) &&
+						question.isAnswered &&
+						question.isSelectedAlternativeCorrect,
+					incorrect:
+						shouldShowCorrectAlternative(question) &&
+						question.isAnswered &&
+						!question.isSelectedAlternativeCorrect,
 				}"
 			></span>
 		</div>
@@ -17,10 +23,22 @@
 <script>
 export default {
 	computed: {
-        answers() {
-            return this.$store.getters.getAnswers;
-        }
-    }
+		questions() {
+			return this.$store.getters.getQuestions;
+		},
+		currentQuestion() {
+			return this.$store.getters.getCurrentQuestion;
+		},
+	},
+	methods: {
+		shouldShowCorrectAlternative(question) {
+			if (this.currentQuestion == question) {
+				return this.$store.state.questions.shouldShowCorrectAlternative;
+			} else {
+				return true;
+			}
+		},
+	},
 };
 </script>
 
@@ -49,6 +67,7 @@ export default {
 	width: 40px;
 	border: 2px solid white;
 	border-radius: 50%;
+	transition: var(--default-transition);
 }
 
 .score-circle.correct {

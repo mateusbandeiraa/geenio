@@ -2,9 +2,12 @@
 	<p id="question-text">{{ question.text }}</p>
 	<div class="answer-block">
 		<answer-button
-			v-for="alternative in question.alternatives"
+			v-for="alternative of question.alternatives"
 			:key="alternative"
 			:text="alternative"
+			@answerSelected="
+				handleAnswerSelected(question.alternatives.indexOf(alternative))
+			"
 		/>
 	</div>
 </template>
@@ -13,8 +16,30 @@
 import AnswerButton from "./AnswerButton.vue";
 export default {
 	components: { AnswerButton },
-	props: {
-		question: { type: Object, required: true },
+	computed: {
+		question() {
+			return this.$store.getters.getCurrentQuestion;
+		},
+	},
+	methods: {
+		handleAnswerSelected(alternativeIndex) {
+			this.question.selectedAlternative = alternativeIndex;
+			setTimeout(() => {
+				this.$store.commit('showCorrectAlternative');
+			}, 1500);
+			// const correctAnswer = this.question.answer;
+			// const selectedAnswer = this.question.alternatives.indexOf(button.text);
+
+			// const didSelectCorrectAnswer = (correctAnswer == selectedAnswer);
+
+			// if(didSelectCorrectAnswer){
+			// 	this.$store.commit('insertCorrectAnswer');
+			// } else {
+			// 	this.$store.commit('insertIncorrectAnswer');
+			// }
+
+			// this.$store.commit('incrementCurrentQuestion');
+		},
 	},
 };
 </script>
