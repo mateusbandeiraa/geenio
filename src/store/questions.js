@@ -56,5 +56,8 @@ export const questions = {
     getQuestions(state){
       return state.questions;
     },
+    isLastQuestion(state){
+      return (state.currentQuestion + 1) == state.questions.length;
+    }
   },
 };

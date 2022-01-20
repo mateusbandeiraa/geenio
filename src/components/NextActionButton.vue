@@ -1,5 +1,6 @@
 <template>
-	<button @click="goToNextQuestion">Próxima pergunta →</button>
+	<button @click="goToNextQuestion" v-if="!isLastQuestion">Próxima pergunta →</button>
+	<button v-else>Compartilhar</button>
 </template>
 
 <script>
@@ -7,6 +8,9 @@ export default {
 	props: {
 	},
 	computed: {
+		isLastQuestion() {
+			return this.$store.getters.isLastQuestion;
+		}
 	},
     methods: {
         goToNextQuestion() {

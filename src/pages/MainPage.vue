@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import NextQuestionButton from "../components/NextQuestionButton.vue";
+import NextQuestionButton from "../components/NextActionButton.vue";
 import QuestionBlock from "../components/QuestionBlock.vue";
 import ScoreBar from "../components/ScoreBar.vue";
 import TheHeader from "../components/TheHeader.vue";
