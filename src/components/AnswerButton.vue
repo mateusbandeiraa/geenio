@@ -19,6 +19,7 @@ button {
 	padding: 1rem 2rem;
 	margin: 0;
 	text-decoration: none;
+	text-align: left;
 	background: transparent;
 	color: var(--main-color);
 	font-size: 1rem;

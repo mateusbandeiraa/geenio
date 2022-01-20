@@ -1,14 +1,16 @@
 <template>
 	<ol>
-		<li value="3" id="question-text">Quantos cocos uma andorinha é capaz de carregar?</li>
+		<li value="3" id="question-text">
+			<p>Quantos cocos uma andorinha é capaz de carregar?</p>
+			<div class="answer-block">
+				<answer-button
+					v-for="answerText in ['Uma', 'Duas', 'Três']"
+					:key="answerText"
+					:answerText="answerText"
+				/>
+			</div>
+		</li>
 	</ol>
-	<div class="answer-block">
-		<answer-button
-			v-for="answerText in ['Uma', 'Duas', 'Três']"
-			:key="answerText"
-			:answerText="answerText"
-		/>
-	</div>
 </template>
 
 <script>
@@ -18,12 +20,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #question-text {
-    font-size: 1.75em;
+	font-size: 1.75em;
 }
 .answer-block {
-    padding-left: 40px;
 	display: grid;
 	row-gap: 16px;
 }

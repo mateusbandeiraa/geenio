@@ -6,8 +6,8 @@
 				v-for="i in 5"
 				:key="i"
 				:class="{
-					correct: correctAnswers.includes(i - 1),
-					incorrect: incorrectAnswers.includes(i - 1),
+					correct: answers[i-1] == 'correct',
+					incorrect: answers[i-1] == 'incorrect',
 				}"
 			></span>
 		</div>
@@ -16,12 +16,11 @@
 
 <script>
 export default {
-	data: function () {
-		return {
-			correctAnswers: [0, 1],
-			incorrectAnswers: [2],
-		};
-	},
+	computed: {
+        answers() {
+            return this.$store.getters.getAnswers;
+        }
+    }
 };
 </script>
 
