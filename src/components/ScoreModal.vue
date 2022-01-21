@@ -15,6 +15,9 @@ import ScoreBar from "./ScoreBar.vue";
 export default {
 	components: { ScoreBar },
 	computed: {
+		gameNumber() {
+			return this.$store.state.questions.gameNumber;
+		},
 		totalCorrectAnswers() {
 			return this.$store.getters.getTotalCorrectAnswers;
 		},
@@ -34,7 +37,7 @@ export default {
 		},
 		tweetText() {
 			return encodeURI(
-				`joguei geenio n°1 ${this.totalCorrectAnswers}/${this.totalQuestions}\n${this.scoreCircles}\n\ngeenio.bandeira.dev`
+				`joguei geenio n°${this.gameNumber} ${this.totalCorrectAnswers}/${this.totalQuestions}\n\n${this.scoreCircles}\n\ngeenio.bandeira.dev`
 			);
 		},
 	},
