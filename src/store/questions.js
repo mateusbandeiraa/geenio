@@ -23,17 +23,17 @@ export const questions = {
       const currentQuestion = context.getters.getCurrentQuestion;
       currentQuestion.selectAlternative = alternative;
     },
-    loadQuestions(context) {
+    loadQuestions({commit, state}) {
       const allQuestions = Papa.parse(questionsCSV, { header: true }).data;
       const todaysQuestions = shuffle(
         allQuestions,
-        new Date().toISOString().slice(0, 10).replace(/-/g, "")
+        state.gameNumber
       )
         .slice(0, 5)
         .map((questionFromCSV) => {
           return new Question(questionFromCSV);
         });
-      context.commit("setQuestions", todaysQuestions);
+      commit("setQuestions", todaysQuestions);
     },
   },
 
