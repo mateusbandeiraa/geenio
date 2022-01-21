@@ -1,5 +1,7 @@
 <template>
-	<main-page />
+	<div>
+		<main-page />
+	</div>
 </template>
 
 <script>
@@ -15,7 +17,7 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap");
 * {
 	box-sizing: border-box;
 }
@@ -31,7 +33,8 @@ export default {
 	--incorrect-answer-color: hsl(0, 83%, 52%);
 	--incorrect-answer-border-color: hsl(0, 83%, 32%);
 
-	--default-transition: background 250ms ease-in-out, color 150ms ease-in-out, transform 150ms ease;
+	--default-transition: background 250ms ease-in-out, color 150ms ease-in-out,
+		transform 150ms ease;
 }
 body {
 	font-family: "Exo 2", sans-serif;
@@ -40,5 +43,10 @@ body {
 	border-top: 10px solid var(--main-highlight-color);
 	background-color: var(--main-bg-color);
 	color: var(--main-color);
+}
+div {
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
 }
 </style>
