@@ -21,18 +21,11 @@ export default {
 		parentQuestion() {
 			return this.$store.getters.getCurrentQuestion;
 		},
-		alternativeIndex() {
-			return this.parentQuestion.getAlternativeIndex(this.text);
-		},
 		isSelected() {
-			return (
-				this.parentQuestion.selectedAlternative == this.alternativeIndex
-			);
+			return this.parentQuestion.selectedAlternative == this.text;
 		},
 		isCorrectAlternative() {
-			return (
-				this.parentQuestion.correctAlternative == this.alternativeIndex
-			);
+			return this.parentQuestion.correctAlternative == this.text;
 		},
 		shouldShowCorrectAlternative() {
 			return this.$store.state.questions.isShowingCorrectAlternative;
