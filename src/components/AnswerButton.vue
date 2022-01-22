@@ -56,7 +56,7 @@ button {
 
 button:hover,
 button:focus {
-	background: rgba(255, 255, 255, 0.15);
+	background: var(--main-bg-hover-color)
 }
 
 button:focus {

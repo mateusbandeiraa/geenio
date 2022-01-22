@@ -89,12 +89,10 @@ export default {
 	flex-flow: column;
 	align-items: center;
 
-	background-color: hsla(202, 85%, 8%, 0.9);
+	background-color: var(--main-bg-color-translucent);
 	backdrop-filter: blur(2px);
 	width: 600px;
 	max-width: 90%;
-
-	max-height: 60%;
 
 	padding: 32px;
 	border: 3px solid var(--main-highlight-color);

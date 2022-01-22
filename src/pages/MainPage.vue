@@ -1,6 +1,8 @@
 <template>
 	<the-header />
+	<div class="main-content">
 	<question-block />
+	</div>
 	<div id="bottom-bar">
 		<transition name="fadeinonly">
 			<next-question-button
@@ -52,9 +54,13 @@ export default {
 	margin-bottom: 32px;
 }
 
+.main-content{
+	margin-bottom: 160px;
+}
+
 #bottom-bar {
 	display: block;
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 	left: 0;
 	right: 0;

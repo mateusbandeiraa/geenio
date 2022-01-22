@@ -28,7 +28,7 @@ button {
 	margin: 0;
 	text-decoration: none;
 	text-align: center;
-	background-color: var(--main-bg-color);
+	background-color: var(--main-bg-color-translucent);
 	color: var(--main-color);
 	font-size: 1rem;
 	cursor: pointer;
@@ -39,7 +39,7 @@ button {
 
 button:hover,
 button:focus {
-	background: rgba(255, 255, 255, 0.15);
+	background: var(--main-bg-hover-color-translucent);
 }
 
 button:focus {

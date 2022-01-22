@@ -25,7 +25,11 @@ export default {
 	box-sizing: border-box;
 }
 :root {
-	--main-bg-color: #031926;
+	--main-bg-color: hsl(202, 85%, 8%);
+	--main-bg-color-translucent: hsla(202, 85%, 8%, 0.9);
+	--main-bg-hover-color: hsl(203,26%,22%);
+	--main-bg-hover-color-translucent: hsl(203,26%,22%, 0.9);
+	
 	--main-color: #fffffa;
 	--main-highlight-color: #f05d5e;
 
