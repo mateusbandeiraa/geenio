@@ -27,7 +27,7 @@ export const questions = {
       const allQuestions = Papa.parse(questionsCSV, { header: true }).data;
       const todaysQuestions = shuffle(
         allQuestions,
-        state.gameNumber
+        state.gameNumber.toString(2)
       )
         .slice(0, 5)
         .map((questionFromCSV) => {
