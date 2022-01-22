@@ -1,17 +1,19 @@
 <template>
 	<the-header />
 	<question-block />
-	<transition name="fadeinonly">
-		<next-question-button
-			id="next-question-button"
-			v-if="shouldShowNextQuestionButton"
-		/>
-	</transition>
-	<transition name="fade" >
-		<score-bar id="main-score-bar" v-if="!hasGameEnded"/>
-	</transition>
+	<div id="bottom-bar">
+		<transition name="fadeinonly">
+			<next-question-button
+				id="next-question-button"
+				v-if="shouldShowNextQuestionButton"
+			/>
+		</transition>
+		<transition name="fade">
+			<score-bar id="main-score-bar" v-if="!hasGameEnded" />
+		</transition>
+	</div>
 	<transition name="fade">
-		<score-modal v-if="hasGameEnded"/>
+		<score-modal v-if="hasGameEnded" />
 	</transition>
 </template>
 
@@ -31,7 +33,10 @@ export default {
 	},
 	computed: {
 		shouldShowNextQuestionButton() {
-			return this.$store.state.questions.isShowingCorrectAlternative && !this.$store.getters.isLastQuestion;
+			return (
+				this.$store.state.questions.isShowingCorrectAlternative &&
+				!this.$store.getters.isLastQuestion
+			);
 		},
 		hasGameEnded() {
 			return this.$store.getters.hasGameEnded;
@@ -44,16 +49,16 @@ export default {
 #next-question-button {
 	display: block;
 	width: 100%;
-	margin-top: 64px;
+	margin-bottom: 32px;
 }
 
-#main-score-bar {
+#bottom-bar {
 	display: block;
 	position: absolute;
 	bottom: 0;
 	left: 0;
 	right: 0;
-	padding: 16px 0;
+	padding: 16px;
 }
 
 .fadeinonly-enter-active,

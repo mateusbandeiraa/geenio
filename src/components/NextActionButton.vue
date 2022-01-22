@@ -28,7 +28,7 @@ button {
 	margin: 0;
 	text-decoration: none;
 	text-align: center;
-	background: transparent;
+	background-color: var(--main-bg-color);
 	color: var(--main-color);
 	font-size: 1rem;
 	cursor: pointer;
