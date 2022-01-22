@@ -12,3 +12,4 @@ jobs:
         username: 'mateusbandeiraa'
         reponame: 'geenio'
         token: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
+        cname: geenio.bandeira.dev
