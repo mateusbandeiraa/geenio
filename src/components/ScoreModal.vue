@@ -7,16 +7,40 @@
 			target="_blank"
 			>compartilhar</a
 		>
+		<p>Novas perguntas em {{ nextGameCountdown }}</p>
 	</div>
 </template>
 
 <script>
+import dayjs from "dayjs";
 import ScoreBar from "./ScoreBar.vue";
 export default {
 	components: { ScoreBar },
+	data: function () {
+		return {
+			nextGameCountdown: "",
+			countdownHandle: null,
+		};
+	},
+	methods: {
+		updateCountdown() {
+			const nextGameDate = this.$store.state.questions.nextGameDate;
+			let remaining = dayjs.duration(nextGameDate.diff(dayjs()));
+			if (remaining.asMilliseconds() < 0) {
+				remaining = dayjs.duration(0);
+			}
+			this.nextGameCountdown = remaining
+				.locale("pt-br")
+				.format("H[h] m[m] s[s]") //
+				.replaceAll(" ", "\xa0"); // So that the whole countdown is shown in the same line.
+		},
+	},
 	computed: {
 		gameNumber() {
-			return this.$store.state.questions.gameNumber;
+			return new String(this.$store.state.questions.gameNumber).padStart(
+				2,
+				"0"
+			);
 		},
 		totalCorrectAnswers() {
 			return this.$store.getters.getTotalCorrectAnswers;
@@ -40,6 +64,16 @@ export default {
 				`joguei geenio n°${this.gameNumber} ${this.totalCorrectAnswers}/${this.totalQuestions}\n\n${this.scoreCircles}\n\ngeenio.bandeira.dev`
 			);
 		},
+	},
+	beforeMount: function () {
+		this.updateCountdown();
+
+		this.countdownHandle = setInterval(() => {
+			this.updateCountdown();
+		}, 1000);
+	},
+	beforeUnmount: function () {
+		clearInterval(this.countdownHandle);
 	},
 };
 </script>
@@ -69,6 +103,10 @@ export default {
 p {
 	font-size: 1.75em;
 	text-align: center;
+}
+
+.modal > p:last-of-type {
+	margin-bottom: 0;
 }
 a {
 	font-size: 1.5em;

@@ -13,6 +13,9 @@ export default {
 	components: {
 		MainPage,
 	},
+	created() {
+		this.$store.dispatch("loadQuestions");
+	},
 };
 </script>
 

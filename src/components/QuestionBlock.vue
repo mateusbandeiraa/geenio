@@ -5,9 +5,7 @@
 			v-for="alternative of question.alternatives"
 			:key="alternative"
 			:text="alternative"
-			@answerSelected="
-				handleAnswerSelected(question.alternatives.indexOf(alternative))
-			"
+			@answerSelected="handleAnswerSelected(alternative)"
 		/>
 	</div>
 </template>
@@ -25,8 +23,8 @@ export default {
 		},
 	},
 	methods: {
-		handleAnswerSelected(alternativeIndex) {
-			this.question.selectedAlternative = alternativeIndex;
+		handleAnswerSelected(alternative) {
+			this.question.selectedAlternative = alternative;
 			setTimeout(() => {
 				this.$store.commit("showCorrectAlternative");
 				if (this.isLastQuestion) {
