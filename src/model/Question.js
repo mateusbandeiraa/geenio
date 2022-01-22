@@ -16,6 +16,11 @@ export default class Question {
       simpleHash(this.text)
     );
 
+    // If all alternatives are numeric values, we want to display them in order.
+    if(this.alternatives.every(value => {return !isNaN(value)})){
+      this.alternatives = this.alternatives.sort();
+    }
+
     this.correctAlternative = correct_alternative;
   }
 
