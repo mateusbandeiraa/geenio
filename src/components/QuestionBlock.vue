@@ -30,7 +30,7 @@ export default {
 				if (this.isLastQuestion) {
 					setTimeout(() => {
 						this.$store.commit("finishGame");
-					});
+					}, 750);
 				}
 			}, 750);
 		},
