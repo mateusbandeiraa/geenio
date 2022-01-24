@@ -74,7 +74,7 @@ export default {
 				.join("");
 		},
 		shareText() {
-			return `joguei geenio n°${this.gameNumber} ${this.totalCorrectAnswers}/${this.totalQuestions}\n\n${this.scoreCircles}\n\ngeenio.bandeira.dev`;
+			return `joguei geenio n°${this.gameNumber} ${this.totalCorrectAnswers}/${this.totalQuestions}\n\n${this.scoreCircles}\n\nhttps://geenio.bandeira.dev`;
 		},
 	},
 	beforeMount: function () {
