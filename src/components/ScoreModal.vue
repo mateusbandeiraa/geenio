@@ -2,11 +2,12 @@
 	<div class="modal">
 		<score-bar />
 		<p>{{ totalCorrectAnswers }}/{{ totalQuestions }} acertos</p>
-		<a
-			:href="'https://twitter.com/intent/tweet?text=' + tweetText"
-			target="_blank"
-			>compartilhar</a
-		>
+		<button @click="shareAction">
+			<transition name="fadeoutonly" mode="out-in">
+				<span v-if="copiedShareText">Texto copiado</span>
+				<span v-else>compartilhar</span>
+			</transition>
+		</button>
 		<p>Novas perguntas em {{ nextGameCountdown }}</p>
 	</div>
 </template>
@@ -18,11 +19,24 @@ export default {
 	components: { ScoreBar },
 	data: function () {
 		return {
+			copiedShareText: false,
 			nextGameCountdown: "",
 			countdownHandle: null,
 		};
 	},
 	methods: {
+		shareAction() {
+			if (navigator.share) {
+				navigator.share({ text: this.shareText });
+			} else {
+				navigator.clipboard.writeText(this.shareText).then(() => {
+					this.copiedShareText = true;
+					setTimeout(() => {
+						this.copiedShareText = false;
+					}, 2000);
+				});
+			}
+		},
 		updateCountdown() {
 			const nextGameDate = this.$store.state.questions.nextGameDate;
 			let remaining = dayjs.duration(nextGameDate.diff(dayjs()));
@@ -59,10 +73,8 @@ export default {
 				})
 				.join("");
 		},
-		tweetText() {
-			return encodeURI(
-				`joguei geenio n°${this.gameNumber} ${this.totalCorrectAnswers}/${this.totalQuestions}\n\n${this.scoreCircles}\n\ngeenio.bandeira.dev`
-			);
+		shareText() {
+			return `joguei geenio n°${this.gameNumber} ${this.totalCorrectAnswers}/${this.totalQuestions}\n\n${this.scoreCircles}\n\ngeenio.bandeira.dev`;
 		},
 	},
 	beforeMount: function () {
@@ -105,19 +117,5 @@ p {
 
 .modal > p:last-of-type {
 	margin-bottom: 0;
-}
-a {
-	font-size: 1.5em;
-	text-decoration: none;
-	color: var(--main-color);
-	background-color: var(--main-bg-color);
-	border: 2px solid var(--main-color);
-	padding: 8px 16px;
-	border-radius: 32px;
-	transition: var(--default-transition);
-}
-a:hover,
-a:focus {
-	background: rgba(255, 255, 255, 0.15);
 }
 </style>

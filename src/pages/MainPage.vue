@@ -66,21 +66,4 @@ export default {
 	right: 0;
 	padding: 16px;
 }
-
-.fadeinonly-enter-active,
-.fade-enter-active,
-.fade-leave-active {
-	transition: opacity 250ms ease-in-out;
-}
-
-.fadeinonly-leave-active {
-	transition: none;
-}
-
-.fadeinonly-enter-from,
-.fadeinonly-leave-to,
-.fade-enter-from,
-.fade-leave-to {
-	opacity: 0;
-}
 </style>

@@ -27,9 +27,9 @@ export default {
 :root {
 	--main-bg-color: hsl(202, 85%, 8%);
 	--main-bg-color-translucent: hsla(202, 85%, 8%, 0.9);
-	--main-bg-hover-color: hsl(203,26%,22%);
-	--main-bg-hover-color-translucent: hsl(203,26%,22%, 0.9);
-	
+	--main-bg-hover-color: hsl(203, 26%, 22%);
+	--main-bg-hover-color-translucent: hsl(203, 26%, 22%, 0.9);
+
 	--main-color: #fffffa;
 	--main-highlight-color: #f05d5e;
 
@@ -55,5 +55,59 @@ div {
 	max-width: 600px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+/* Reset button styles. From: https://css-tricks.com/overriding-default-button-styles */
+button {
+	border: 2px solid var(--main-color);
+	border-radius: 32px;
+	display: inline-block;
+	padding: 1rem 2rem;
+	margin: 0;
+	text-decoration: none;
+	text-align: left;
+	background: transparent;
+	color: var(--main-color);
+	font-size: 1rem;
+	cursor: pointer;
+	transition: var(--default-transition);
+	-webkit-appearance: none;
+	-moz-appearance: none;
+}
+
+button:hover,
+button:focus {
+	background: var(--main-bg-hover-color);
+}
+
+button:focus {
+	outline: 1px solid #fff;
+	outline-offset: -4px;
+}
+
+button:active {
+	transform: scale(0.99);
+}
+
+/* Transitions */
+.fadeinonly-enter-active,
+.fadeoutonly-leave-active,
+.fade-enter-active,
+.fade-leave-active {
+	transition: opacity 250ms ease-in-out;
+}
+
+.fadeinonly-leave-active
+.fadeoutonly-enter-active {
+	transition: none;
+}
+
+.fadeinonly-enter-from,
+.fadeinonly-leave-to,
+.fadeoutonly-enter-from,
+.fadeoutonly-leave-to,
+.fade-enter-from,
+.fade-leave-to {
+	opacity: 0;
 }
 </style>
