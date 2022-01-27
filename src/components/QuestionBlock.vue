@@ -4,7 +4,7 @@
 		<answer-button
 			v-for="alternative of question.alternatives"
 			:key="alternative"
-			:text="alternative"
+			:value="alternative"
 			@answerSelected="handleAnswerSelected(alternative)"
 		/>
 	</div>

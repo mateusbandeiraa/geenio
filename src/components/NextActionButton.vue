@@ -1,9 +1,11 @@
 <template>
-	<button @click="goToNextQuestion">Próxima pergunta →</button>
+	<my-button @click="goToNextQuestion">Próxima pergunta →</my-button>
 </template>
 
 <script>
+import MyButton from "./MyButton.vue";
 export default {
+	components: { MyButton },
 	props: {},
 	computed: {
 		isLastQuestion() {

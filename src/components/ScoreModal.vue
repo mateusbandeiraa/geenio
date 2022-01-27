@@ -2,12 +2,12 @@
 	<div class="modal">
 		<score-bar />
 		<p>{{ totalCorrectAnswers }}/{{ totalQuestions }} acertos</p>
-		<button @click="shareAction">
+		<my-button @click="shareAction">
 			<transition name="fadeoutonly" mode="out-in">
 				<span v-if="copiedShareText">Texto copiado</span>
 				<span v-else>compartilhar</span>
 			</transition>
-		</button>
+		</my-button>
 		<p>Novas perguntas em {{ nextGameCountdown }}</p>
 	</div>
 </template>
@@ -15,8 +15,9 @@
 <script>
 import dayjs from "dayjs";
 import ScoreBar from "./ScoreBar.vue";
+import MyButton from './MyButton.vue';
 export default {
-	components: { ScoreBar },
+	components: { ScoreBar, MyButton },
 	data: function () {
 		return {
 			copiedShareText: false,
