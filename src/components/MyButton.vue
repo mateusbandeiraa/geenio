@@ -38,4 +38,12 @@ button:focus {
 button:active {
 	transform: scale(0.99);
 }
+
+button.small {
+	border: none;
+	padding: 8px;
+	width: 32px;
+	height: 32px;
+	border-radius: 8px;
+}
 </style>

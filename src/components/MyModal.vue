@@ -1,7 +1,14 @@
 <template>
-	<div class="modal">
-		<my-button @click="$emit('closeRequested')" class="close-button">✕</my-button>
-		<slot />
+	<div>
+		<div class="modal-background" @click="$emit('closeRequested')" />
+		<div class="modal">
+			<my-button
+				@click="$emit('closeRequested')"
+				class="small close-button"
+				>✕</my-button
+			>
+			<slot />
+		</div>
 	</div>
 </template>
 
@@ -9,7 +16,7 @@
 import MyButton from "./MyButton.vue";
 export default {
 	components: { MyButton },
-	emits: ['closeRequested']
+	emits: ["closeRequested"],
 };
 </script>
 
@@ -33,17 +40,25 @@ export default {
 	padding-top: 48px;
 	border: 3px solid var(--main-highlight-color);
 	border-radius: 16px;
+
+	/* So it always appears in front of .modal-background */
+	z-index: 999;
 }
 
 .modal > .close-button {
 	position: absolute;
 	top: 16px;
 	right: 16px;
+}
 
-	border: none;
-	padding: 8px;
-	width: 32px;
-	height: 32px;
-	border-radius: 8px;
+.modal-background {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	/* So it always appears behind .modal */
+	z-index: 998;
 }
 </style>

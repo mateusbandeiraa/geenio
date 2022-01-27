@@ -1,5 +1,8 @@
 <template>
-	<the-header />
+	<the-header
+		@requestShowScore="isShowingScore = true"
+		:shouldShowScoreButton="hasGameEnded && !isShowingScore"
+	/>
 	<div class="main-content">
 		<question-block />
 	</div>
@@ -11,10 +14,7 @@
 			/>
 		</transition>
 		<transition name="fade">
-			<score-bar
-				id="main-score-bar"
-				v-if="!isShowingScore"
-			/>
+			<score-bar id="main-score-bar" v-if="!isShowingScore" />
 		</transition>
 	</div>
 	<transition name="fade">
