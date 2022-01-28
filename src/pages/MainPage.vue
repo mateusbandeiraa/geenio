@@ -1,7 +1,10 @@
 <template>
-	<the-header />
+	<the-header
+		@requestShowScore="isShowingScore = true"
+		:shouldShowScoreButton="hasGameEnded && !isShowingScore"
+	/>
 	<div class="main-content">
-	<question-block />
+		<question-block />
 	</div>
 	<div id="bottom-bar">
 		<transition name="fadeinonly">
@@ -11,11 +14,14 @@
 			/>
 		</transition>
 		<transition name="fade">
-			<score-bar id="main-score-bar" v-if="!hasGameEnded" />
+			<score-bar id="main-score-bar" v-if="!isShowingScore" />
 		</transition>
 	</div>
 	<transition name="fade">
-		<score-modal v-if="hasGameEnded" />
+		<score-modal
+			v-if="isShowingScore"
+			@closeRequested="isShowingScore = false"
+		/>
 	</transition>
 </template>
 
@@ -33,6 +39,11 @@ export default {
 		NextQuestionButton,
 		ScoreModal,
 	},
+	data: function () {
+		return {
+			isShowingScore: false,
+		};
+	},
 	computed: {
 		shouldShowNextQuestionButton() {
 			return (
@@ -42,6 +53,13 @@ export default {
 		},
 		hasGameEnded() {
 			return this.$store.getters.hasGameEnded;
+		},
+	},
+	watch: {
+		hasGameEnded(val) {
+			if (val) {
+				this.isShowingScore = true;
+			}
 		},
 	},
 };
@@ -54,7 +72,7 @@ export default {
 	margin-bottom: 32px;
 }
 
-.main-content{
+.main-content {
 	margin-bottom: 160px;
 }
 

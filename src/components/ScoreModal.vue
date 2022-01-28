@@ -1,22 +1,24 @@
 <template>
-	<div class="modal">
+	<modal>
 		<score-bar />
 		<p>{{ totalCorrectAnswers }}/{{ totalQuestions }} acertos</p>
-		<button @click="shareAction">
+		<my-button @click="shareAction">
 			<transition name="fadeoutonly" mode="out-in">
 				<span v-if="copiedShareText">Texto copiado</span>
 				<span v-else>compartilhar</span>
 			</transition>
-		</button>
+		</my-button>
 		<p>Novas perguntas em {{ nextGameCountdown }}</p>
-	</div>
+	</modal>
 </template>
 
 <script>
 import dayjs from "dayjs";
 import ScoreBar from "./ScoreBar.vue";
+import Modal from "./MyModal.vue";
+import MyButton from './MyButton.vue';
 export default {
-	components: { ScoreBar },
+	components: { ScoreBar, Modal, MyButton },
 	data: function () {
 		return {
 			copiedShareText: false,
@@ -45,7 +47,7 @@ export default {
 			}
 			this.nextGameCountdown = remaining
 				.locale("pt-br")
-				.format("H[h] m[m] s[s]") //
+				.format("HH[h] mm[m] ss[s]") //
 				.replaceAll(" ", "\xa0"); // So that the whole countdown is shown in the same line.
 		},
 	},
@@ -91,25 +93,6 @@ export default {
 </script>
 
 <style scoped>
-.modal {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-
-	display: flex;
-	flex-flow: column;
-	align-items: center;
-
-	background-color: var(--main-bg-color-translucent);
-	backdrop-filter: blur(2px);
-	width: 600px;
-	max-width: 90%;
-
-	padding: 32px;
-	border: 3px solid var(--main-highlight-color);
-	border-radius: 16px;
-}
 p {
 	font-size: 1.75em;
 	text-align: center;
