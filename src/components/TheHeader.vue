@@ -1,8 +1,22 @@
 <template>
 	<div class="header">
-		<my-button id="show-about-button" class="small header-button"
-			><BIconQuestionLg
-		/></my-button>
+		<my-button
+			id="show-about-button"
+			class="small header-button"
+			@click="shouldShowAboutModal = true"
+		>
+			<BIconQuestionLg />
+		</my-button>
+		<teleport to="body">
+			<transition name="fade">
+				<keep-alive>
+					<about-modal
+						@closeRequested="shouldShowAboutModal = false"
+						v-if="shouldShowAboutModal"
+					/>
+				</keep-alive>
+			</transition>
+		</teleport>
 		<h1 id="title">geenio</h1>
 		<transition name="fade">
 			<my-button
@@ -20,8 +34,14 @@
 <script>
 import MyButton from "./MyButton.vue";
 import { BIconQuestionLg, BIconBarChartFill } from "bootstrap-icons-vue";
+import AboutModal from "./AboutModal.vue";
 export default {
-	components: { MyButton, BIconQuestionLg, BIconBarChartFill },
+	components: { MyButton, BIconQuestionLg, BIconBarChartFill, AboutModal },
+	data: function () {
+		return {
+			shouldShowAboutModal: false,
+		};
+	},
 	props: {
 		shouldShowScoreButton: { type: Boolean, default: false },
 	},
