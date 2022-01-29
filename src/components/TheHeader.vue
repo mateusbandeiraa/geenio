@@ -4,6 +4,7 @@
 			id="show-about-button"
 			class="small header-button"
 			@click="shouldShowAboutModal = true"
+			aria-label="Sobre"
 		>
 			<BIconQuestionLg />
 		</my-button>
@@ -24,6 +25,7 @@
 				id="show-score-button"
 				class="small header-button"
 				@click="$emit('requestShowScore')"
+				aria-label="Pontuação"
 			>
 				<BIconBarChartFill />
 			</my-button>

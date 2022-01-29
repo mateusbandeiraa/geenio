@@ -35,6 +35,7 @@
 				referrerpolicy="no-referrer"
 				crossorigin="anonymous"
                 height="50"
+				alt="100% privacy friendly. Simple Analytics."
 		/></a>
 	</my-modal>
 </template>

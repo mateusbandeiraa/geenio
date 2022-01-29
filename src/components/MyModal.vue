@@ -5,6 +5,7 @@
 			<my-button
 				@click="$emit('closeRequested')"
 				class="small close-button"
+				aria-label="fechar"
 				>✕</my-button
 			>
 			<slot />
