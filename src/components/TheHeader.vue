@@ -62,17 +62,19 @@ export default {
 }
 
 .header > .header-button {
-	width: 36px;
-	height: 36px;
+	font-size: 1.2rem;
+	line-height: 0;
 	border: 2px solid var(--main-color);
 }
 
 #show-about-button {
 	grid-column-start: 1;
+	justify-self: start;
 }
 
 #show-score-button {
 	grid-column-start: 3;
+	justify-self: end;
 }
 
 /* Need to redefine this here because it wouldn't work on buttons otherwise.*/

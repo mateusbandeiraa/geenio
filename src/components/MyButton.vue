@@ -42,8 +42,8 @@ button:active {
 button.small {
 	border: none;
 	padding: 8px;
-	width: 32px;
-	height: 32px;
+	width: 48px;
+	height: 48px;
 	border-radius: 8px;
 }
 </style>
