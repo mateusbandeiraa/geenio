@@ -1,7 +1,12 @@
+/* Startup */
 import { createApp } from "vue";
+import App from "./App.vue";
+
+const app = createApp(App);
+
+/* Vuex config */
 import { createStore } from "vuex";
 import { questions } from "./store/questions";
-import App from "./App.vue";
 
 const store = createStore({
   modules: {
@@ -9,12 +14,21 @@ const store = createStore({
   },
 });
 
-createApp(App).use(store).mount("#app");
+app.use(store);
 
+/* Vue Router config */
+import router from './router'
+app.use(router);
+
+/* DayJS config */
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import duration from 'dayjs/plugin/duration';
 import 'dayjs/locale/pt-br'
+
 dayjs.extend(relativeTime);
 dayjs.extend(duration);
 dayjs.locale('pt-br');
+
+/* App mounting */
+app.mount("#app");

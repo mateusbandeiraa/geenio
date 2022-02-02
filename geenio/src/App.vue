@@ -1,18 +1,14 @@
 <template>
 	<div>
-		<main-page />
+		<router-view />
 	</div>
 </template>
 
 <script>
 import "normalize.css";
-import MainPage from "./pages/MainPage.vue";
 
 export default {
 	name: "App",
-	components: {
-		MainPage,
-	},
 	created() {
 		this.$store.dispatch("loadQuestions");
 	},
@@ -65,8 +61,7 @@ div {
 	transition: opacity 250ms ease-in-out;
 }
 
-.fadeinonly-leave-active
-.fadeoutonly-enter-active {
+.fadeinonly-leave-active .fadeoutonly-enter-active {
 	transition: none;
 }
 
