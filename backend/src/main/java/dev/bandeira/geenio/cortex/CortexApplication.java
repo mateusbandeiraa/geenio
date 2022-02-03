@@ -6,7 +6,6 @@ import java.util.UUID;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 import dev.bandeira.geenio.cortex.model.Question;
 import dev.bandeira.geenio.cortex.repository.QuestionRepository;
@@ -20,7 +19,7 @@ public class CortexApplication {
 		SpringApplication.run(CortexApplication.class, args);
 	}
 
-	 @Bean
+	// @Bean
 	public CommandLineRunner test(QuestionRepository repository) {
 		return (args) -> {
 			Question question = new Question(null, "Texto da Pergunta", null);
@@ -34,7 +33,7 @@ public class CortexApplication {
 		};
 	}
 
-//	@Bean
+	// @Bean
 	public CommandLineRunner test2(QuestionRepository repository) {
 		return (args) -> {
 			Optional<Question> question = repository

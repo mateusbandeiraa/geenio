@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["about"],{a9f2:function(n,o,e){"use strict";function t(n,o,e,t,r,c){return" Welcome to Cortex "}e.r(o);var r={},c=e("6b0d"),u=e.n(c);const a=u()(r,[["render",t]]);o["default"]=a}}]);
+//# sourceMappingURL=about.0bdc227a.js.map
