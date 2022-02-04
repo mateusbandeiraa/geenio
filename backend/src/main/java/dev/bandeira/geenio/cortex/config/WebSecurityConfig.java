@@ -17,8 +17,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.and().httpBasic() //
 				.and() //
 				.authorizeRequests().antMatchers("/api/public/**").permitAll() //
-				.anyRequest().authenticated() // protect all other requests
-				.and().csrf().disable(); // disable cross site request forgery, as we don't use
+				.and() //
+				.authorizeRequests().antMatchers("/api/**").authenticated() //
+				.anyRequest().permitAll() //
+				.and() //
+				.csrf().disable(); // disable cross site request forgery, as we don't use
 											// cookies - otherwise ALL PUT, POST, DELETE will get
 											// HTTP 403!
 	}
