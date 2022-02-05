@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import GamePage from "../pages/GamePage.vue";
 import store from "../store/store";
-console.log(store);
+
 const routes = [
   {
     path: "/",
