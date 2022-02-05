@@ -1,16 +1,23 @@
 <template>
   <div class="main-container">
     <h1>Bem-vindo à Home-Page do Córtex</h1>
-    <cortex-sidebar />
-    <question-form />
+    <div class="main-content">
+      <cortex-sidebar />
+      <component :is="currentPanel" />
+    </div>
   </div>
 </template>
 
 <script>
 import CortexSidebar from "../../components/cortex/CortexSidebar.vue";
-import QuestionForm from "../../components/cortex/QuestionForm.vue";
+import CreateQuestionPanel from "../../components/cortex/CreateQuestionPanel.vue";
 export default {
-  components: { CortexSidebar, QuestionForm },
+  components: { CortexSidebar, CreateQuestionPanel },
+  data: function () {
+    return {
+      currentPanel: "CreateQuestionPanel",
+    };
+  },
 };
 </script>
 
@@ -22,5 +29,10 @@ h1 {
   max-width: 1024px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
 }
 </style>

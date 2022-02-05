@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -15,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.validation.constraints.Size;
+
+import org.springframework.util.StringUtils;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -37,10 +40,7 @@ public class Question {
 	private Author author;
 
 	@Getter(AccessLevel.NONE) // We want to manually implement these.
-	@OneToMany(mappedBy = "question",
-			cascade = CascadeType.ALL,
-			fetch = FetchType.EAGER,
-			orphanRemoval = true)
+	@OneToMany(mappedBy = "question", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	@OrderBy("order")
 	private final List<Alternative> alternatives = new ArrayList<>();
 
@@ -50,7 +50,7 @@ public class Question {
 	@Entity(name = "alternative")
 	protected static class Alternative implements Serializable {
 		private static final long serialVersionUID = -2911129391474486828L;
-		
+
 		@Size(max = 30)
 		private String text;
 		private boolean isCorrect;
@@ -64,8 +64,8 @@ public class Question {
 		private Question question;
 	}
 
-	public void addAlternative(String text, boolean isCorrect, int order) {
-		Alternative alternative = new Alternative(text, isCorrect, order, this);
+	public void addAlternative(String text, boolean isCorrect) {
+		Alternative alternative = new Alternative(text, isCorrect, 0, this);
 		this.alternatives.add(alternative);
 		this.updateAlternativesOrder();
 	}
@@ -74,6 +74,40 @@ public class Question {
 		int counter = 0;
 		for (Alternative element : alternatives) {
 			element.setOrder(counter++);
+		}
+	}
+	@Data
+	@NoArgsConstructor
+	public static class QuestionDTO {
+		private String id;
+		private String text;
+		private String[] alternatives;
+		private String correctAlternative;
+
+		public QuestionDTO(Question question) {
+			this.id = question.getId().toString();
+			this.text = question.getText();
+			this.alternatives = (String[]) question.alternatives.stream()
+																.map(Alternative::getText)
+																.collect(Collectors.toList())
+																.toArray();
+			this.correctAlternative = question.alternatives	.stream()
+															.filter(Alternative::isCorrect)
+															.findFirst()
+															.get()
+															.getText();
+		}
+
+		public Question asQuestion() {
+			Question question = new Question();
+			if(StringUtils.hasText(this.id)) {
+				question.setId(UUID.fromString(this.id));
+			}
+			question.setText(this.getText());
+			for (String alternative : alternatives) {
+				question.addAlternative(alternative, correctAlternative.equals(alternative));
+			}
+			return question;
 		}
 	}
 
