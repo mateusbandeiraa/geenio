@@ -7,10 +7,12 @@ const app = createApp(App);
 /* Vuex config */
 import { createStore } from "vuex";
 import { questions } from "./store/questions";
+import {authentication} from './store/authentication';
 
 const store = createStore({
   modules: {
     questions,
+    authentication
   },
 });
 
@@ -36,6 +38,7 @@ const axiosAPI = axios.create({
   baseURL: "/api",
 });
 app.config.globalProperties.$http = axiosAPI;
+store.$http = axiosAPI; // So authentication.js can call the api
 
 /* App mounting */
 app.mount("#app");

@@ -9,6 +9,7 @@
 			v-model="loginPassword"
 		/>
 		<my-button>Login</my-button>
+        <p v-if="loginMessage">{{loginMessage}}</p>
 	</form>
 </template>
 
@@ -18,24 +19,23 @@ export default {
 	components: { MyButton },
 	data: function () {
 		return {
-			loginId: '',
-			loginPassword: '',
+			loginId: "",
+			loginPassword: "",
+            loginMessage: null,
 		};
 	},
 	methods: {
 		onSubmitLogin() {
-			this.$http.get("/cortex/login", {
-				auth: {
-					username: this.loginId,
-					password: this.loginPassword,
-				},
-			}).then(() => {
-                console.log("Authorized.");
-            }).catch(error => {
-                if(error.response.status === 401){
-                    console.error("Unauthorized.");
-                }
-            });
+            this.loginMessage = null;
+			this.$store
+				.dispatch("login", { userid: this.loginId, password: this.loginPassword })
+				.catch((error) => {
+                    if(error.response.status === 401){
+                        this.loginMessage = "Credenciais inválidas";
+                    } else {
+                        this.loginMessage = "Erro inesperado";
+                    }
+                });
 		},
 	},
 };
