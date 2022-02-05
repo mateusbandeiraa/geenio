@@ -1,12 +1,14 @@
 package dev.bandeira.geenio.cortex.model;
 
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
+import javax.persistence.Temporal;
 import javax.validation.constraints.Size;
 
 import org.springframework.util.StringUtils;
@@ -38,6 +41,11 @@ public class Question {
 	private String text;
 	@ManyToOne
 	private Author author;
+
+	@Column(nullable = false)
+	private Instant createTime;
+	private Instant updateTime;
+	private String addedBy;
 
 	@Getter(AccessLevel.NONE) // We want to manually implement these.
 	@OneToMany(mappedBy = "question", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
@@ -100,7 +108,7 @@ public class Question {
 
 		public Question asQuestion() {
 			Question question = new Question();
-			if(StringUtils.hasText(this.id)) {
+			if (StringUtils.hasText(this.id)) {
 				question.setId(UUID.fromString(this.id));
 			}
 			question.setText(this.getText());
