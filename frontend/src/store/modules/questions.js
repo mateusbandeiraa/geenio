@@ -1,5 +1,5 @@
-import Question from "../model/Question";
-import questionsCSV from "!raw-loader!../assets/questions.csv";
+import Question from "../../model/Question";
+import questionsCSV from "!raw-loader!../../assets/questions.csv";
 import { shuffle } from "shuffle-seed";
 import dayjs from "dayjs";
 import Papa from "papaparse";

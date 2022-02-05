@@ -5,21 +5,13 @@ import App from "./App.vue";
 const app = createApp(App);
 
 /* Vuex config */
-import { createStore } from "vuex";
-import { questions } from "./store/questions";
-import { authentication } from "./store/authentication";
-
-const store = createStore({
-  modules: {
-    questions,
-    authentication,
-  },
-});
+import store from "./store/store";
 
 app.use(store);
 
 /* Vue Router config */
-import router from "./router";
+import router from "./router/router";
+
 app.use(router);
 
 /* DayJS config */

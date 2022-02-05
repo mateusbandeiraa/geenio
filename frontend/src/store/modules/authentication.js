@@ -1,18 +1,16 @@
 export const authentication = {
   state: () => ({
-    userid: null,
-    password: null,
-    isAuthenticated: false,
+    userid: sessionStorage.getItem("cortex/userid"),
+    password: sessionStorage.getItem("cortex/password"),
   }),
   mutations: {
     setUserid(state, payload) {
+      sessionStorage.setItem("cortex/userid", payload);
       state.userid = payload;
     },
     setPassword(state, payload) {
+      sessionStorage.setItem("cortex/password", payload);
       state.password = payload;
-    },
-    setAuthenticated(state, payload) {
-      state.isAuthenticated = payload === true; // Forcing isAuthenticated to be boolean
     },
   },
   actions: {
@@ -28,18 +26,16 @@ export const authentication = {
           // Login successful
           commit("setUserid", credentials.userid);
           commit("setPassword", credentials.password);
-          commit("isAuthenticated", true);
         })
         .catch((error) => {
           commit("setUserid", null);
           commit("setPassword", null);
-          commit("isAuthenticated", false);
           throw error;
         });
     },
   },
   getters: {
-    hasCredentials(state) {
+    isAuthenticated(state) {
       return state.userid && state.password;
     },
   },

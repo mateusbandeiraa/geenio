@@ -38,6 +38,10 @@ export default {
           } else {
             this.loginMessage = "Erro inesperado";
           }
+          throw error;
+        })
+        .then(() => {
+          this.$router.push({ name: "cortexHome" });
         });
     },
   },
