@@ -1,5 +1,7 @@
 <template>
-  <my-button @click="goToNextQuestion">Próxima pergunta →</my-button>
+  <my-button @click="goToNextQuestion">
+    Próxima pergunta →
+  </my-button>
 </template>
 
 <script>

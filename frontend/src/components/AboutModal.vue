@@ -8,29 +8,33 @@
         opções.
       </p>
       <p>Todo dia, sempre à meia-noite, cinco novas perguntas são mostradas.</p>
-      <hr />
+      <hr>
       <p>
         Desenvolvido por
-        <a href="https://mateusbandeira.dev" target="_blank">Mateus Bandeira</a>
+        <a
+          href="https://mateusbandeira.dev"
+          target="_blank"
+        >Mateus Bandeira</a>
       </p>
       <p>
         Perguntas com a contribuição de
-        <a href="https://github.com/henriquebafilho" target="_blank"
-          >Henrique Filho</a
-        >
+        <a
+          href="https://github.com/henriquebafilho"
+          target="_blank"
+        >Henrique Filho</a>
       </p>
     </article>
     <a
       href="https://simpleanalytics.com/?utm_source=geenio.bandeira.dev&utm_content=badge"
       referrerpolicy="origin"
       target="_blank"
-      ><img
-        src="https://simpleanalyticsbadges.com/geenio.bandeira.dev?mode=dark"
-        loading="lazy"
-        referrerpolicy="no-referrer"
-        crossorigin="anonymous"
-        height="50"
-    /></a>
+    ><img
+      src="https://simpleanalyticsbadges.com/geenio.bandeira.dev?mode=dark"
+      loading="lazy"
+      referrerpolicy="no-referrer"
+      crossorigin="anonymous"
+      height="50"
+    ></a>
   </my-modal>
 </template>
 

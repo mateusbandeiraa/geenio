@@ -1,6 +1,5 @@
 <template>
   <my-button
-    @click="$emit('answerSelected', this)"
     class="answer-button"
     :class="{
       selected: isSelected,
@@ -8,6 +7,7 @@
       incorrect: shouldShowCorrectAlternative && !isCorrectAlternative,
     }"
     :disabled="parentQuestion.isAnswered"
+    @click="$emit('answerSelected', this)"
   >
     {{ value }}
   </my-button>
@@ -20,6 +20,7 @@ export default {
   props: {
     value: { type: String, required: true },
   },
+  emits: ["answerSelected"],
   computed: {
     parentQuestion() {
       return this.$store.getters.getCurrentQuestion;
@@ -34,7 +35,6 @@ export default {
       return this.$store.state.questions.isShowingCorrectAlternative;
     },
   },
-  emits: ["answerSelected"],
 };
 </script>
 

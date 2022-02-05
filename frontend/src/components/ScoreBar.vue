@@ -1,9 +1,9 @@
 <template>
   <div class="score-circles-container">
     <span
-      class="score-circle"
       v-for="question in questions"
       :key="question.text"
+      class="score-circle"
       :class="{
         correct:
           shouldShowCorrectAlternative(question) &&
@@ -14,7 +14,7 @@
           question.isAnswered &&
           !question.isSelectedAlternativeCorrect,
       }"
-    ></span>
+    />
   </div>
 </template>
 

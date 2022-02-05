@@ -3,7 +3,10 @@
     <score-bar />
     <p>{{ totalCorrectAnswers }}/{{ totalQuestions }} acertos</p>
     <my-button @click="shareAction">
-      <transition name="fadeoutonly" mode="out-in">
+      <transition
+        name="fadeoutonly"
+        mode="out-in"
+      >
         <span v-if="copiedShareText">Texto copiado</span>
         <span v-else>compartilhar</span>
       </transition>
@@ -25,31 +28,6 @@ export default {
       nextGameCountdown: "",
       countdownHandle: null,
     };
-  },
-  methods: {
-    shareAction() {
-      if (navigator.share) {
-        navigator.share({ text: this.shareText });
-      } else {
-        navigator.clipboard.writeText(this.shareText).then(() => {
-          this.copiedShareText = true;
-          setTimeout(() => {
-            this.copiedShareText = false;
-          }, 2000);
-        });
-      }
-    },
-    updateCountdown() {
-      const nextGameDate = this.$store.state.questions.nextGameDate;
-      let remaining = dayjs.duration(nextGameDate.diff(dayjs()));
-      if (remaining.asMilliseconds() < 0) {
-        remaining = dayjs.duration(0);
-      }
-      this.nextGameCountdown = remaining
-        .locale("pt-br")
-        .format("HH[h] mm[m] ss[s]") //
-        .replaceAll(" ", "\xa0"); // So that the whole countdown is shown in the same line.
-    },
   },
   computed: {
     gameNumber() {
@@ -87,6 +65,31 @@ export default {
   },
   beforeUnmount: function () {
     clearInterval(this.countdownHandle);
+  },
+  methods: {
+    shareAction() {
+      if (navigator.share) {
+        navigator.share({ text: this.shareText });
+      } else {
+        navigator.clipboard.writeText(this.shareText).then(() => {
+          this.copiedShareText = true;
+          setTimeout(() => {
+            this.copiedShareText = false;
+          }, 2000);
+        });
+      }
+    },
+    updateCountdown() {
+      const nextGameDate = this.$store.state.questions.nextGameDate;
+      let remaining = dayjs.duration(nextGameDate.diff(dayjs()));
+      if (remaining.asMilliseconds() < 0) {
+        remaining = dayjs.duration(0);
+      }
+      this.nextGameCountdown = remaining
+        .locale("pt-br")
+        .format("HH[h] mm[m] ss[s]") //
+        .replaceAll(" ", "\xa0"); // So that the whole countdown is shown in the same line.
+    },
   },
 };
 </script>

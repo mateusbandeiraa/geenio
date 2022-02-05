@@ -11,13 +11,15 @@
       <transition name="fade">
         <keep-alive>
           <about-modal
-            @closeRequested="shouldShowAboutModal = false"
             v-if="shouldShowAboutModal"
+            @closeRequested="shouldShowAboutModal = false"
           />
         </keep-alive>
       </transition>
     </teleport>
-    <h1 id="title">geenio</h1>
+    <h1 id="title">
+      geenio
+    </h1>
     <transition name="fade">
       <my-button
         v-if="shouldShowScoreButton"
@@ -37,15 +39,15 @@ import { BIconQuestionLg, BIconBarChartFill } from "bootstrap-icons-vue";
 import AboutModal from "./AboutModal.vue";
 export default {
   components: { MyButton, BIconQuestionLg, BIconBarChartFill, AboutModal },
+  props: {
+    shouldShowScoreButton: { type: Boolean, default: false },
+  },
+  emits: ["requestShowScore"],
   data: function () {
     return {
       shouldShowAboutModal: false,
     };
   },
-  props: {
-    shouldShowScoreButton: { type: Boolean, default: false },
-  },
-  emits: ["requestShowScore"],
 };
 </script>
 

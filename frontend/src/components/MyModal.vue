@@ -1,10 +1,16 @@
 <template>
   <div>
-    <div class="modal-background" @click="$emit('closeRequested')" />
+    <div
+      class="modal-background"
+      @click="$emit('closeRequested')"
+    />
     <div class="modal">
-      <my-button @click="$emit('closeRequested')" class="small close-button"
-        >✕</my-button
+      <my-button
+        class="small close-button"
+        @click="$emit('closeRequested')"
       >
+        ✕
+      </my-button>
       <slot />
     </div>
   </div>

@@ -1,5 +1,7 @@
 <template>
-  <p id="question-text">{{ question.text }}</p>
+  <p id="question-text">
+    {{ question.text }}
+  </p>
   <div class="answer-block">
     <answer-button
       v-for="alternative of question.alternatives"

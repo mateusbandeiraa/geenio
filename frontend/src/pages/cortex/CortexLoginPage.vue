@@ -1,15 +1,25 @@
 <template>
   <h1>Bem-vindo ao córtex</h1>
-  <form class="login-form" @submit.prevent="onSubmitLogin">
-    <input type="text" placeholder="id" name="id" v-model="loginId" />
+  <form
+    class="login-form"
+    @submit.prevent="onSubmitLogin"
+  >
     <input
+      v-model="loginId"
+      type="text"
+      placeholder="id"
+      name="id"
+    >
+    <input
+      v-model="loginPassword"
       type="password"
       placeholder="senha"
       name="passsword"
-      v-model="loginPassword"
-    />
+    >
     <my-button>Login</my-button>
-    <p v-if="loginMessage">{{ loginMessage }}</p>
+    <p v-if="loginMessage">
+      {{ loginMessage }}
+    </p>
   </form>
 </template>
 

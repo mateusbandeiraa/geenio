@@ -1,7 +1,7 @@
 <template>
   <the-header
+    :should-show-score-button="hasGameEnded && !isShowingScore"
     @requestShowScore="isShowingScore = true"
-    :shouldShowScoreButton="hasGameEnded && !isShowingScore"
   />
   <div class="main-content">
     <question-block />
@@ -9,12 +9,15 @@
   <div id="bottom-bar">
     <transition name="fadeinonly">
       <next-question-button
-        id="next-question-button"
         v-if="shouldShowNextQuestionButton"
+        id="next-question-button"
       />
     </transition>
     <transition name="fade">
-      <score-bar id="main-score-bar" v-if="!isShowingScore" />
+      <score-bar
+        v-if="!isShowingScore"
+        id="main-score-bar"
+      />
     </transition>
   </div>
   <transition name="fade">
