@@ -1,31 +1,33 @@
 <template>
-  <the-header
-    :should-show-score-button="hasGameEnded && !isShowingScore"
-    @requestShowScore="isShowingScore = true"
-  />
-  <div class="main-content">
-    <question-block />
-  </div>
-  <div id="bottom-bar">
-    <transition name="fadeinonly">
-      <next-question-button
-        v-if="shouldShowNextQuestionButton"
-        id="next-question-button"
-      />
-    </transition>
-    <transition name="fade">
-      <score-bar
-        v-if="!isShowingScore"
-        id="main-score-bar"
-      />
-    </transition>
-  </div>
-  <transition name="fade">
-    <score-modal
-      v-if="isShowingScore"
-      @closeRequested="isShowingScore = false"
+  <div class="main-container">
+    <the-header
+      :should-show-score-button="hasGameEnded && !isShowingScore"
+      @requestShowScore="isShowingScore = true"
     />
-  </transition>
+    <div class="main-content">
+      <question-block />
+    </div>
+    <div id="bottom-bar">
+      <transition name="fadeinonly">
+        <next-question-button
+          v-if="shouldShowNextQuestionButton"
+          id="next-question-button"
+        />
+      </transition>
+      <transition name="fade">
+        <score-bar
+          v-if="!isShowingScore"
+          id="main-score-bar"
+        />
+      </transition>
+    </div>
+    <transition name="fade">
+      <score-modal
+        v-if="isShowingScore"
+        @closeRequested="isShowingScore = false"
+      />
+    </transition>
+  </div>
 </template>
 
 <script>
@@ -74,7 +76,11 @@ export default {
   width: 100%;
   margin-bottom: 32px;
 }
-
+.main-container {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .main-content {
   margin-bottom: 160px;
 }
@@ -82,6 +88,7 @@ export default {
 #bottom-bar {
   display: block;
   position: fixed;
+  max-width: inherit; /* Inherits from .main-container */
   bottom: 0;
   left: 0;
   right: 0;

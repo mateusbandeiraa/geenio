@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <router-view />
-  </div>
+  <router-view />
 </template>
 
 <script>
@@ -46,11 +44,6 @@ body {
   border-top: 10px solid var(--main-highlight-color);
   background-color: var(--main-bg-color);
   color: var(--main-color);
-}
-div {
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* Transitions */
