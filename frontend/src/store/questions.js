@@ -31,12 +31,12 @@ export const questions = {
 
       const cycleNumber = Math.floor(gameNumber / maxDays); // How many times we cycled through all questons
 
-      const gameNumberInCycle = gameNumber - (cycleNumber * maxDays);
-      const firstQuestionIndex = (gameNumberInCycle) * 5;
+      const gameNumberInCycle = gameNumber - cycleNumber * maxDays;
+      const firstQuestionIndex = gameNumberInCycle * 5;
 
       /* If I want to force the change of the order of the questions,
        * I can create a new deploy with a different salt. */
-      const shuffleSalt = 'NaCl';
+      const shuffleSalt = "NaCl";
       const hash = cycleNumber.toString(2) + shuffleSalt;
 
       const todaysQuestions = shuffle(allQuestions, hash)

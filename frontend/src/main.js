@@ -7,12 +7,12 @@ const app = createApp(App);
 /* Vuex config */
 import { createStore } from "vuex";
 import { questions } from "./store/questions";
-import {authentication} from './store/authentication';
+import { authentication } from "./store/authentication";
 
 const store = createStore({
   modules: {
     questions,
-    authentication
+    authentication,
   },
 });
 
