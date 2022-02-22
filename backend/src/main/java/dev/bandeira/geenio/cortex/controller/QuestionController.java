@@ -2,6 +2,7 @@ package dev.bandeira.geenio.cortex.controller;
 
 import java.security.Principal;
 import java.time.Instant;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -14,13 +15,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import dev.bandeira.geenio.cortex.model.Question;
 import dev.bandeira.geenio.cortex.model.Question.QuestionDTO;
@@ -43,8 +47,26 @@ public class QuestionController {
 		questionRepository.save(question);
 	}
 
+	@PutMapping
+	public void editQuestion(@RequestBody QuestionDTO questionDTO, Principal principal) {
+		final Question originalQuestion = questionRepository.findById(
+				questionDTO.asQuestion().getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		final QuestionDTO originalDTO = new QuestionDTO(originalQuestion);
+
+		if (Objects.isNull(questionDTO.getCreateTime())) {
+			questionDTO.setCreateTime(originalDTO.getCreateTime());
+		}
+
+		log.info("Request to edit question: {}", questionDTO);
+		Question question = questionDTO.asQuestion();
+		question.setAddedBy(principal.getName());
+		question.setUpdateTime(Instant.now());
+		questionRepository.save(question);
+	}
+
 	@GetMapping
-	public Page<QuestionDTO> getQuestions(@RequestParam(name = "page", defaultValue = "0") @PositiveOrZero final int page,
+	public Page<QuestionDTO> getQuestions(
+			@RequestParam(name = "page", defaultValue = "0") @PositiveOrZero final int page,
 			@RequestParam(name = "pageSize", defaultValue = "10") @Positive @Max(50) final int pageSize) {
 		return questionRepository	.findAll(PageRequest.of(page, pageSize, Sort.by(Direction.DESC, "createTime")))
 									.map(QuestionDTO::new);

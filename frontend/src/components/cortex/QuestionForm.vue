@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <form @submit.prevent="handleFormSubmit">
     <label for="questionID">ID</label>
     <input
       id="questionID"
@@ -76,11 +76,18 @@ export default {
   components: { MyButton },
   props: {
     question: Question,
+    isCreateMode: Boolean,
   },
-  emits: ["questionCreated"],
+  emits: ["submit"],
   data: function () {
     return {
-      localQuestion: this.question,
+      localQuestion: new Question({
+        id: this.question.id,
+        text: this.question.text,
+        author: this.question.author,
+        alternatives: [...this.question.alternatives],
+        correctAlternative: this.question.correctAlternative,
+      }),
       correctAlternativeIndex: 0,
       /* When the user hits the manual shuffle button, it sets shuffleOnSave to false.
       This happens so the alternatives are not shuffled again on saving. 
@@ -136,15 +143,21 @@ export default {
       this.shuffleAlternatives();
     },
     shuffleAlternatives() {
-      let shuffledAlternatives = this.question.alternatives;
-      const correctAlternative = this.question.correctAlternative;
+      let shuffledAlternatives = this.localQuestion.alternatives;
+      const correctAlternative = this.localQuestion.correctAlternative;
       do {
         shuffledAlternatives = shuffle(this.alternatives, Math.random());
-      } while (shuffledAlternatives === this.question.alternatives);
+      } while (shuffledAlternatives === this.localQuestion.alternatives);
 
       this.localQuestion.alternatives = shuffledAlternatives;
       this.correctAlternativeIndex =
-        this.question.alternatives.indexOf(correctAlternative);
+        this.localQuestion.alternatives.indexOf(correctAlternative);
+    },
+    handleFormSubmit() {
+      if (this.shuffleOnSave && this.isCreateMode) {
+        this.shuffleAlternatives();
+      }
+      this.$emit("submit", this.localQuestion);
     },
   },
 };

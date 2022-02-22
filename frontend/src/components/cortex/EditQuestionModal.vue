@@ -8,7 +8,8 @@
     </h1>
     <question-form
       :question="question"
-      @submit.prevent="handleFormSubmit"
+      :is-create-mode="isCreateMode"
+      @submit="handleFormSubmit"
     />
   </my-modal>
 </template>
@@ -29,30 +30,36 @@ export default {
     },
   },
   methods: {
-    handleFormSubmit() {
+    handleFormSubmit(question) {
       if (this.isCreateMode) {
-        this.createQuestion();
+        this.createQuestion(question);
       } else {
-        this.saveQuestion();
+        this.saveQuestion(question);
       }
     },
-    createQuestion() {
-      if (this.shuffleOnSave) {
-        this.shuffleAlternatives();
-      }
+    createQuestion(question) {
       this.$http
-        .post("/cortex/question", this.question)
+        .post("/cortex/question", question)
         .then(() => {
           this.formMessage = "Pergunta criada.";
-          this.$emit("questionCreated", this.question);
+          this.$emit("questionCreated", question);
         })
         .catch((error) => {
           this.formMessage = `Ocorreu um erro. ${error.message}`;
           console.error(error);
         });
     },
-    saveQuestion() {
-      // placeholder
+    saveQuestion(question) {
+        this.$http
+        .put("/cortex/question", question)
+        .then(() => {
+          this.formMessage = "Pergunta criada.";
+          this.$emit("questionCreated", question);
+        })
+        .catch((error) => {
+          this.formMessage = `Ocorreu um erro. ${error.message}`;
+          console.error(error);
+        });
     },
   },
 };

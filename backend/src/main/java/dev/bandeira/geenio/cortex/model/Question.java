@@ -67,9 +67,15 @@ public class Question {
 		private int order;
 
 		@Id
-		@ManyToOne
+		@ManyToOne(fetch = FetchType.LAZY)
 		@ToString.Exclude
 		private Question question;
+
+		@Override
+		public String toString() {
+			return "Alternative [text=" + text + ", isCorrect=" + isCorrect + ", order=" + order + "]";
+		}
+
 	}
 
 	public void addAlternative(String text, boolean isCorrect) {
@@ -119,6 +125,10 @@ public class Question {
 			question.setText(this.getText());
 			for (String alternative : alternatives) {
 				question.addAlternative(alternative, correctAlternative.equals(alternative));
+			}
+			
+			if(Objects.nonNull(this.createTime)) {
+				question.setCreateTime(Instant.parse(this.createTime));
 			}
 			return question;
 		}
