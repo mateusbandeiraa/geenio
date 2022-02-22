@@ -1,4 +1,3 @@
-let authInterceptor = null;
 export const authentication = {
   state: () => ({
     userid: sessionStorage.getItem("cortex/userid"),
@@ -27,17 +26,10 @@ export const authentication = {
           // Login successful
           commit("setUserid", credentials.userid);
           commit("setPassword", credentials.password);
-          authInterceptor = this.$http.interceptors.request.use(function (config) {
-            config.auth = {
-              username: credentials.userid,
-              password: credentials.password,
-            }
-          });
         })
         .catch((error) => {
           commit("setUserid", null);
           commit("setPassword", null);
-          this.$http.interceptors.request.eject(authInterceptor);
           throw error;
         });
     },
@@ -46,5 +38,8 @@ export const authentication = {
     isAuthenticated(state) {
       return state.userid && state.password;
     },
+    getAxiosAuth(state) {
+      return { username: state.userid, password: state.password }
+    }
   },
 };

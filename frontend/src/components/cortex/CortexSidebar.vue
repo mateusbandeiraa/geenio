@@ -23,9 +23,6 @@ export default {
 };
 </script>
 <style scoped>
-aside {
-  max-width: 250px;
-}
 ul {
   list-style: none;
   padding: 0;
@@ -49,6 +46,6 @@ button {
 button > span {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 </style>

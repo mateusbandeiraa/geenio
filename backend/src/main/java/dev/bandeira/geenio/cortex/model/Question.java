@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -90,19 +91,24 @@ public class Question {
 		private String text;
 		private String[] alternatives;
 		private String correctAlternative;
+		private String createTime;
 
 		public QuestionDTO(Question question) {
 			this.id = question.getId().toString();
 			this.text = question.getText();
-			this.alternatives = (String[]) question.alternatives.stream()
-																.map(Alternative::getText)
-																.collect(Collectors.toList())
-																.toArray();
+			this.alternatives = question.alternatives	.stream()
+														.map(Alternative::getText)
+														.map(String.class::cast)
+														.collect(Collectors.toList())
+														.toArray(new String[0]);
 			this.correctAlternative = question.alternatives	.stream()
 															.filter(Alternative::isCorrect)
 															.findFirst()
 															.get()
 															.getText();
+			if (Objects.nonNull(question.createTime)) {
+				this.createTime = question.createTime.toString();
+			}
 		}
 
 		public Question asQuestion() {

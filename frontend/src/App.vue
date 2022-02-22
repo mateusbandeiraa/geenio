@@ -1,12 +1,27 @@
 <template>
-  <router-view />
+  <el-config-provider
+    :size="size"
+    :z-index="zIndex"
+  >
+    <router-view />
+  </el-config-provider>
 </template>
 
 <script>
 import "normalize.css";
+import { ElConfigProvider } from "element-plus";
 
 export default {
   name: "App",
+  components: {
+    ElConfigProvider,
+  },
+  setup() {
+    return {
+      zIndex: 3000,
+      size: "small",
+    };
+  },
   created() {
     this.$store.dispatch("loadQuestions");
   },

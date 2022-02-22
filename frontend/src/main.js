@@ -26,11 +26,18 @@ dayjs.locale("pt-br");
 
 /* Axios config */
 import axios from "axios";
-const axiosAPI = axios.create({
+const axiosInstance = axios.create({
   baseURL: "/api",
 });
-app.config.globalProperties.$http = axiosAPI;
-store.$http = axiosAPI; // So authentication.js can call the api
+app.config.globalProperties.$http = axiosInstance;
+store.$http = axiosInstance; // So authentication.js can call the api
+
+axiosInstance.interceptors.request.use((config) => {
+  if (store.getters.isAuthenticated) {
+    config.auth = store.getters.getAxiosAuth;
+  }
+  return config;
+});
 
 /* App mounting */
 app.mount("#app");

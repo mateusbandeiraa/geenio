@@ -44,9 +44,10 @@ public class QuestionController {
 	}
 
 	@GetMapping
-	public Page<Question> getQuestions(@RequestParam(name = "page", defaultValue = "0") @PositiveOrZero final int page,
+	public Page<QuestionDTO> getQuestions(@RequestParam(name = "page", defaultValue = "0") @PositiveOrZero final int page,
 			@RequestParam(name = "pageSize", defaultValue = "10") @Positive @Max(50) final int pageSize) {
-		return questionRepository.findAll(PageRequest.of(page, pageSize, Sort.by(Direction.DESC, "createTime")));
+		return questionRepository	.findAll(PageRequest.of(page, pageSize, Sort.by(Direction.DESC, "createTime")))
+									.map(QuestionDTO::new);
 	}
 
 	@GetMapping("/{uuidString}")

@@ -1,21 +1,28 @@
 <template>
-  <div class="main-container">
-    <h1>Bem-vindo à Home-Page do Córtex</h1>
-    <div class="main-content">
+  <el-row>
+    <el-col :span="24">
+      <h1>Bem-vindo à Home-Page do Córtex</h1>
+    </el-col>
+  </el-row>
+  <el-row :gutter="20">
+    <el-col :span="4">
       <cortex-sidebar />
+    </el-col>
+    <el-col :span="20">
       <component :is="currentPanel" />
-    </div>
-  </div>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
 import CortexSidebar from "../../components/cortex/CortexSidebar.vue";
 import CreateQuestionPanel from "../../components/cortex/CreateQuestionPanel.vue";
+import QuestionsPanel from "../../components/cortex/QuestionsPanel.vue";
 export default {
-  components: { CortexSidebar, CreateQuestionPanel },
+  components: { CortexSidebar, CreateQuestionPanel, QuestionsPanel },
   data: function () {
     return {
-      currentPanel: "CreateQuestionPanel",
+      currentPanel: "QuestionsPanel",
     };
   },
 };
@@ -24,15 +31,5 @@ export default {
 <style scoped>
 h1 {
   text-align: center;
-}
-.main-container {
-  max-width: 1024px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.main-content {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
 }
 </style>
