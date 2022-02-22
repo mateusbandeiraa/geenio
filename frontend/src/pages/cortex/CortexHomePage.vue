@@ -16,10 +16,9 @@
 
 <script>
 import CortexSidebar from "../../components/cortex/CortexSidebar.vue";
-import CreateQuestionPanel from "../../components/cortex/CreateQuestionPanel.vue";
 import QuestionsPanel from "../../components/cortex/QuestionsPanel.vue";
 export default {
-  components: { CortexSidebar, CreateQuestionPanel, QuestionsPanel },
+  components: { CortexSidebar, QuestionsPanel },
   data: function () {
     return {
       currentPanel: "QuestionsPanel",

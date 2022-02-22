@@ -74,6 +74,8 @@ import Question from "../../model/NewQuestion";
 import MyButton from "../MyButton.vue";
 export default {
   components: { MyButton },
+  props: { isCreateMode: { type: Boolean, default: true } },
+  emits: ["questionCreated"],
   data: function () {
     return {
       question: new Question({
@@ -110,6 +112,13 @@ export default {
   },
   methods: {
     onFormSubmit() {
+      if (this.isCreateMode) {
+        this.createQuestion();
+      } else {
+        this.saveQuestion();
+      }
+    },
+    createQuestion() {
       if (this.shuffleOnSave) {
         this.shuffleAlternatives();
       }
@@ -118,11 +127,15 @@ export default {
         .then(() => {
           this.clearForm();
           this.formMessage = "Pergunta criada.";
+          this.$emit("questionCreated", this.question);
         })
         .catch((error) => {
           this.formMessage = `Ocorreu um erro. ${error.message}`;
           console.error(error);
         });
+    },
+    saveQuestion() {
+      // placeholder
     },
     updateCorrectAlternativeField() {
       this.question.correctAlternative =

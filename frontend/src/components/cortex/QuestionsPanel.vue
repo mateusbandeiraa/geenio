@@ -1,4 +1,24 @@
 <template>
+  <el-row>
+    <el-col :span="20">
+      <h2>Perguntas</h2>
+    </el-col>
+    <el-col
+      :span="4"
+      size="large"
+    >
+      <my-button @click="showNewQuestionModal">
+        Nova pergunta
+      </my-button>
+      <transition name="fade">
+        <edit-question-modal
+          v-if="isShowingEditQuestionModal"
+          @closeRequested="handleEditQuestionModalCloseRequested"
+          @questionCreated="handleQuestionCreated"
+        />
+      </transition>
+    </el-col>
+  </el-row>
   <el-skeleton
     :loading="isLoading"
     :rows="5"
@@ -43,13 +63,16 @@
 </template>
 
 <script>
+import EditQuestionModal from "./EditQuestionModal.vue";
 export default {
+  components: { EditQuestionModal },
   data: function () {
     return {
       page: 0,
       pageSize: 10,
       questions: [],
       isLoading: false,
+      isShowingEditQuestionModal: false,
     };
   },
   watch: {
@@ -79,6 +102,15 @@ export default {
     },
     handlePageChange(newPage) {
       this.page = newPage;
+    },
+    showNewQuestionModal() {
+      this.isShowingEditQuestionModal = true;
+    },
+    handleEditQuestionModalCloseRequested() {
+      this.isShowingEditQuestionModal = false;
+    },
+    handleQuestionCreated() {
+      this.loadData();
     },
   },
 };
