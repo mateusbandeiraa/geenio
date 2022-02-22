@@ -13,6 +13,7 @@
       <transition name="fade">
         <edit-question-modal
           v-if="isShowingEditQuestionModal"
+          :question="activeQuestion"
           @closeRequested="handleEditQuestionModalCloseRequested"
           @questionCreated="handleQuestionCreated"
         />
@@ -33,6 +34,7 @@
         <el-table-column
           prop="id"
           label="Id"
+          min-width="100"
         />
         <el-table-column
           prop="text"
@@ -50,29 +52,46 @@
           prop="createTime"
           label="Criada em"
         />
+        <el-table-column
+          :fixed="right"
+          label="Ações"
+        >
+          <template #default="scope">
+            <el-button
+              type="text"
+              size="small"
+              @click="handleEditQuestion(scope.$index)"
+            >
+              Editar
+            </el-button>
+          </template>
+        </el-table-column>
       </el-table>
     </template>
   </el-skeleton>
   <el-pagination
     :background="true"
     layout="prev, pager, next, jumper, total, sizes"
-    :total="questions.length"
+    :total="totalQuestions"
     @size-change="handlePageSizeChange"
-    @page-change="handlePageChange"
+    @current-change="handlePageChange"
   />
 </template>
 
 <script>
 import EditQuestionModal from "./EditQuestionModal.vue";
+import Question from "../../model/NewQuestion";
 export default {
   components: { EditQuestionModal },
   data: function () {
     return {
-      page: 0,
+      page: 1,
       pageSize: 10,
       questions: [],
+      totalQuestions: 0,
       isLoading: false,
       isShowingEditQuestionModal: false,
+      activeQuestion: null,
     };
   },
   watch: {
@@ -90,8 +109,11 @@ export default {
     loadData() {
       this.isLoading = true;
       this.$http
-        .get(`/cortex/question?page=${this.page}&pageSize=${this.pageSize}`)
-        .then((response) => (this.questions = response.data.content))
+        .get(`/cortex/question?page=${this.page - 1}&pageSize=${this.pageSize}`)
+        .then((response) => {
+          this.questions = response.data.content;
+          this.totalQuestions = response.data.totalElements;
+        })
         .catch()
         .then(() => {
           this.isLoading = false;
@@ -99,18 +121,38 @@ export default {
     },
     handlePageSizeChange(newSize) {
       this.pageSize = newSize;
+      this.loadData();
     },
     handlePageChange(newPage) {
       this.page = newPage;
+      this.loadData();
     },
     showNewQuestionModal() {
+      this.activeQuestion = new Question({
+        id: null,
+        text: null,
+        alternatives: ["", "", ""],
+        correctAlternative: null,
+      });
       this.isShowingEditQuestionModal = true;
     },
     handleEditQuestionModalCloseRequested() {
       this.isShowingEditQuestionModal = false;
     },
     handleQuestionCreated() {
+      this.activeQuestion = new Question({
+        id: null,
+        text: null,
+        alternatives: ["", "", ""],
+        correctAlternative: null,
+      });
       this.loadData();
+      this.isShowingEditQuestionModal = false;
+    },
+    handleEditQuestion(index) {
+      const question = this.questions[index];
+      this.activeQuestion = question;
+      this.isShowingEditQuestionModal = true;
     },
   },
 };

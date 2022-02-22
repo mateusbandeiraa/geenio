@@ -1,16 +1,16 @@
 <template>
-  <form @submit.prevent="onFormSubmit">
+  <form>
     <label for="questionID">ID</label>
     <input
       id="questionID"
-      v-model="question.id"
+      v-model="localQuestion.id"
       type="text"
       disabled
     >
     <label for="questionText">Texto</label>
     <input
       id="questionText"
-      v-model="question.text"
+      v-model="localQuestion.text"
       type="text"
       required
       maxlength="70"
@@ -18,13 +18,13 @@
     <label for="questionAlternatives">Alternativas</label>
     <div class="alternatives-container">
       <div
-        v-for="(alternative, index) in question.alternatives"
+        v-for="(alternative, index) in localQuestion.alternatives"
         :key="index"
         class="alternative-formgroup"
       >
         <input
           :id="`questionText_${index}`"
-          v-model="question.alternatives[index]"
+          v-model="localQuestion.alternatives[index]"
           type="text"
           maxlength="30"
         >
@@ -74,16 +74,13 @@ import Question from "../../model/NewQuestion";
 import MyButton from "../MyButton.vue";
 export default {
   components: { MyButton },
-  props: { isCreateMode: { type: Boolean, default: true } },
+  props: {
+    question: Question,
+  },
   emits: ["questionCreated"],
   data: function () {
     return {
-      question: new Question({
-        id: null,
-        text: null,
-        alternatives: ["", "", ""],
-        correctAlternative: null,
-      }),
+      localQuestion: this.question,
       correctAlternativeIndex: 0,
       /* When the user hits the manual shuffle button, it sets shuffleOnSave to false.
       This happens so the alternatives are not shuffled again on saving. 
@@ -96,10 +93,16 @@ export default {
   },
   computed: {
     alternatives() {
-      return this.question.alternatives;
+      return this.localQuestion.alternatives;
     },
   },
   watch: {
+    question: {
+      deep: true,
+      handler() {
+        this.localQuestion = this.question;
+      },
+    },
     correctAlternativeIndex() {
       this.updateCorrectAlternativeField();
     },
@@ -111,38 +114,12 @@ export default {
     },
   },
   methods: {
-    onFormSubmit() {
-      if (this.isCreateMode) {
-        this.createQuestion();
-      } else {
-        this.saveQuestion();
-      }
-    },
-    createQuestion() {
-      if (this.shuffleOnSave) {
-        this.shuffleAlternatives();
-      }
-      this.$http
-        .post("/cortex/question", this.question)
-        .then(() => {
-          this.clearForm();
-          this.formMessage = "Pergunta criada.";
-          this.$emit("questionCreated", this.question);
-        })
-        .catch((error) => {
-          this.formMessage = `Ocorreu um erro. ${error.message}`;
-          console.error(error);
-        });
-    },
-    saveQuestion() {
-      // placeholder
-    },
     updateCorrectAlternativeField() {
-      this.question.correctAlternative =
-        this.question.alternatives[this.correctAlternativeIndex];
+      this.localQuestion.correctAlternative =
+        this.localQuestion.alternatives[this.correctAlternativeIndex];
     },
     clearForm() {
-      this.question = new Question({
+      this.localQuestion = new Question({
         id: null,
         text: null,
         alternatives: ["", "", ""],
@@ -165,7 +142,7 @@ export default {
         shuffledAlternatives = shuffle(this.alternatives, Math.random());
       } while (shuffledAlternatives === this.question.alternatives);
 
-      this.question.alternatives = shuffledAlternatives;
+      this.localQuestion.alternatives = shuffledAlternatives;
       this.correctAlternativeIndex =
         this.question.alternatives.indexOf(correctAlternative);
     },
