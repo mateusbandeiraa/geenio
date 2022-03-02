@@ -20,55 +20,56 @@
       </transition>
     </el-col>
   </el-row>
-  <el-skeleton
-    :loading="isLoading"
-    :rows="5"
-    :animated="true"
+
+  <el-table
+    :stripe="true"
+    :data="questions"
+    style="width: 100%"
   >
-    <template #default>
-      <el-table
-        :stripe="true"
-        :data="questions"
-        style="width: 100%"
-      >
-        <el-table-column
-          prop="id"
-          label="Id"
-          min-width="100"
+    <el-table-column
+      prop="id"
+      label="Id"
+      min-width="100"
+    />
+    <el-table-column
+      prop="text"
+      label="Texto"
+    />
+    <el-table-column
+      prop="alternatives"
+      label="Alternativas"
+    />
+    <el-table-column
+      prop="correctAlternative"
+      label="Alternativa Correta"
+    />
+    <el-table-column
+      prop="createTime"
+      label="Criada em"
+    />
+    <el-table-column
+      :fixed="right"
+      label="Ações"
+    >
+      <template #header>
+        <el-input
+          v-model="questionSearchTerm"
+          size="small"
+          placeholder="Digite para buscar"
         />
-        <el-table-column
-          prop="text"
-          label="Texto"
-        />
-        <el-table-column
-          prop="alternatives"
-          label="Alternativas"
-        />
-        <el-table-column
-          prop="correctAlternative"
-          label="Alternativa Correta"
-        />
-        <el-table-column
-          prop="createTime"
-          label="Criada em"
-        />
-        <el-table-column
-          :fixed="right"
-          label="Ações"
+      </template>
+      <template #default="scope">
+        <el-button
+          type="text"
+          size="small"
+          @click="handleEditQuestion(scope.$index)"
         >
-          <template #default="scope">
-            <el-button
-              type="text"
-              size="small"
-              @click="handleEditQuestion(scope.$index)"
-            >
-              Editar
-            </el-button>
-          </template>
-        </el-table-column>
-      </el-table>
-    </template>
-  </el-skeleton>
+          Editar
+        </el-button>
+      </template>
+    </el-table-column>
+  </el-table>
+
   <el-pagination
     :background="true"
     layout="prev, pager, next, jumper, total, sizes"
@@ -81,6 +82,9 @@
 <script>
 import EditQuestionModal from "./EditQuestionModal.vue";
 import Question from "../../model/NewQuestion";
+
+import { debounce } from "debounce";
+
 export default {
   components: { EditQuestionModal },
   data: function () {
@@ -90,8 +94,10 @@ export default {
       questions: [],
       totalQuestions: 0,
       isLoading: false,
+      requestAbortController: null,
       isShowingEditQuestionModal: false,
       activeQuestion: null,
+      questionSearchTerm: "",
     };
   },
   watch: {
@@ -101,20 +107,33 @@ export default {
     pageSize: function () {
       this.loadData();
     },
+    questionSearchTerm: debounce(function() {this.loadData()}, 300),
   },
   mounted: function () {
     this.loadData();
   },
   methods: {
     loadData() {
+      if (this.requestAbortController) {
+        this.requestAbortController.abort();
+      }
       this.isLoading = true;
+      this.requestAbortController = new AbortController();
+
+      const params = new URLSearchParams({
+        page: this.page - 1,
+        pageSize: this.pageSize,
+        searchTerm: this.questionSearchTerm,
+      });
       this.$http
-        .get(`/cortex/question?page=${this.page - 1}&pageSize=${this.pageSize}`)
+        .get(`/cortex/question?${params.toString()}`, {
+          signal: this.requestAbortController.signal,
+        })
         .then((response) => {
           this.questions = response.data.content;
           this.totalQuestions = response.data.totalElements;
         })
-        .catch()
+        .catch(() => {})
         .then(() => {
           this.isLoading = false;
         });

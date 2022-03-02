@@ -12,6 +12,7 @@
     "bootstrap-icons-vue": "^0.8.0",
     "core-js": "^3.6.5",
     "dayjs": "^1.10.7",
+    "debounce": "^1.2.1",
     "element-plus": "^2.0.2",
     "normalize.css": "^8.0.1",
     "papaparse": "^5.3.1",

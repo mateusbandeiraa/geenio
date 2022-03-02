@@ -35,6 +35,12 @@ import lombok.extern.log4j.Log4j2;
 @RequestMapping("/api/cortex/question")
 @Log4j2
 public class QuestionController {
+	private static final int MAX_PAGE_SIZE = 50;
+	// This is a String because all HTTP parameters are Strings.
+	private static final String DEFAULT_PAGE_SIZE = "50";
+
+	private static final Sort DEFAULT_QUESTION_SORTING = Sort.by(Direction.DESC, "createTime");
+
 	@Autowired
 	private QuestionRepository questionRepository;
 
@@ -63,13 +69,25 @@ public class QuestionController {
 		question.setUpdateTime(Instant.now());
 		questionRepository.save(question);
 	}
-
-	@GetMapping
+	
+	// For requests without a searchTerm parameter
+	@GetMapping(params = "!searchTerm")
 	public Page<QuestionDTO> getQuestions(
 			@RequestParam(name = "page", defaultValue = "0") @PositiveOrZero final int page,
-			@RequestParam(name = "pageSize", defaultValue = "10") @Positive @Max(50) final int pageSize) {
-		return questionRepository	.findAll(PageRequest.of(page, pageSize, Sort.by(Direction.DESC, "createTime")))
+			@RequestParam(name = "pageSize", defaultValue = DEFAULT_PAGE_SIZE) @Positive @Max(MAX_PAGE_SIZE) final int pageSize) {
+		return questionRepository	.findAll(PageRequest.of(page, pageSize, DEFAULT_QUESTION_SORTING))
 									.map(QuestionDTO::new);
+	}
+	
+	// For requests with a searchTerm parameter
+	@GetMapping(params = "searchTerm")
+	public Page<QuestionDTO> getQuestions(
+			@RequestParam(name = "page", defaultValue = "0") @PositiveOrZero final int page,
+			@RequestParam(name = "pageSize", defaultValue = DEFAULT_PAGE_SIZE) @Positive @Max(MAX_PAGE_SIZE) final int pageSize,
+			@RequestParam("searchTerm") final String searchTerm) {
+		log.info("search");
+		return questionRepository.findByTextContainingOrAlternativesTextContainingAllIgnoreCase(
+				PageRequest.of(page, pageSize, DEFAULT_QUESTION_SORTING), searchTerm).map(QuestionDTO::new);
 	}
 
 	@GetMapping("/{uuidString}")
