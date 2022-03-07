@@ -1,141 +1,46 @@
-text,correct_alternative,incorrect_alternative1,incorrect_alternative2,creator_tw_handle
-Quais são o menor e o maior país do mundo?,Vaticano e Rússia,Mônaco e Estados Unidos,Japão e China,
-A qual banda o cantor Freddie Mercury integrou?,Queen,Duran Duran,Beatles,
-Qual o nome do maior osso do corpo humano?,Fêmur,Úmero,Rádio,
-O azeite de oliva é feito de quê?,Azeitona,Soja,Oliveira,
-Qual é o maior oceano do planeta Terra?,Pacífico,Atlântico,Índico,
-Em que ano Cristóvao Colombo chegou ao continente Americano?,1492,1496,1498,
-Qual é o maior planeta do sistema solar?,Júpiter,Saturno,Vênus,
-Qual é o rio mais extenso do mundo?,Rio Nilo,Rio Amazonas,Rio Congo,
-Qual é o nome da substância responsável pela cor verde das plantas?,Clorofila,Bilirrubina,Água,
-Com qual estado brasileiro o Uruguai faz fronteira?,Rio Grande do Sul,Santa Catarina,Paraná,
-Qual elemento neutraliza o poder do Superman?,Kryptonita,Titânio,Urânio,
-A que temperatura a água ferve?,100ºC,0ºC,180ºC,
-Qual o planeta mais próximo do Sol?,Mercúrio,Marte,Terra,
-Qual destes atores interpretou Sheldon Cooper na televisão?,Jim Parsons,Ed Helms,Sacha Baron Cohen,
-A sitcom Friends possui quantas temporadas?,10,11,12,
-A fabricante de brinquedos LEGO tem origem em qual país?,Dinamarca,Estados Unidos,Alemanha,
-"""Ácido desoxirribonucleico"" também pode ser chamado de...",DNA,Vinagre,Carboidrato,
-Qual é o símbolo do ouro na tabela periódica?,Au,Ou,Go,
-"Quem é o autor do livro ""Sapiens: Uma breve história da humanidade""?",Yuval Noah Harari,Jared Diamond,Neil deGrasse Tyson,
-Em qual país nasceu Pablo Picasso?,Espanha,França,Portugal,
-Beirute é a capital de qual país?,Líbano,Síria,Israel,
-"Quantos anos durou a Guerra das Rosas, iniciada em 1455?",30,20,18,
-As olimpíadas de inverno ocorrem a cada quantos anos?,4,2,6,
-"Na física, Cinemática é o estudo do quê?",Movimento,Luz,Calor,
-"Além de Steve Jobs, quem mais fundou a empresa Apple?",Steve Wozniak,Larry Page,Satya Nadella,
-Em qual estado do Brasil nasceu a apresentadora Xuxa?,Rio Grande do Sul,Rio de Janeiro,São Paulo,
-Quantos signos formam o zodíaco?,12,9,10,
-Vatapá é uma comida típica de qual estado?,Bahia,Ceará,Rio Grande do Norte,
-Qual é o fundador da Microsoft?,Bill Gates,Steve Jobs,Mark Zuckerberg,
-Qual é o nome dado ao pneu reserva do carro?,Estepe,Calota,Macaco,
-Como se chama o lugar onde se guarda vinhos?,Adega,Sala,Sótão,
-Quem é o inimigo do Piu-Piu nos desenhos animados?,Frajola,Mingau,Tom,
-"Como é chamado quem nasce em Milão, na Itália?",Milanês,Milanense,Milanista,
-Peroba é uma espécie de?,Árvore,Animal,Verdura,
-Qual é a raça do personagem principal do filme “Beethoven”?,São Bernardo,Pastor Alemão,Golden Retriever,
-De quantos em quantos anos aparece o cometa Halley?,76 anos,57 anos,64 anos,
-Que atriz protagonizou o filme “Titanic”?,Kate Winslet,Cameron Diaz,Bridget Fonda,
-"Onde nasceu Van Gogh, o grande pintor impressionista?",Holanda,França,Bélgica,
-Qual presidente brasileiro instituiu o AI-5?,Costa e Silva,Ernesto Geisel,João Figueiredo,
-Qual desses quatro pesos é o mais leve?,10 gramas,10 quilos,10 libras,
-Qual tripulante da Apollo 11 não pousou na lua?,Michael Collins,Neil Armstrong,Buzz Aldrin,
-Como se chamam os dois melhores amigos de Harry Potter?,Rony e Hermione,Neville e Gina,Tiago e Lílian,
-Qual é o nome de nascença da cantora Anitta?,Larissa,Natália,Jéssica,
-Qual é o elemento químico representado pelo símbolo Ag na tabela periódica?,Prata,Alumínio,Platina,
-Em que ano ocorreu o acidente nuclear de Chernobil?,1986,1989,1984,
-Quantos quilômetros possui uma maratona?,42,46,32,
-O personagem Conde Drácula nasceu em qual país?,Romênia,Alemanha,Suíça,
-John Green escreveu qual destes livros?,A Culpa é das Estrelas,Crepúsculo,Jogos Vorazes,
-Em que ano foi implementado o Plano Real?,1994,1992,1996,
-Em qual país está localizado o monumento pré-histórico Stonehenge?,Inglaterra,Dinamarca,França,
-Um número de cartão de crédito possui quantos dígitos?,16,12,20,
-Uma polegada equivale a quantos centímetros?,"2,54","1,44","2,24",
-Qual destas redes sociais foi lançada em 2010?,Instagram,Facebook,Twitter,
-Qual é a fórmula molecular do ozônio?,O₃,CH₃Cl,H₂O₂,
-Uma resma de papel possui quantas folhas?,500,250,1000,
-"Shape of You, hit de Ed Sheeran em 2017, faz parte de qual álbum?",÷,+,x,
-Qual destes mascotes não possui um bigode?,Bunny (Duracell),Mr. Monopoly,Julius Pringles,
-Jundiaí é um municipio de qual estado?,São Paulo,Rio de Janeiro,Minas Gerais,
-"Websites terminados em "".gr"" pertencem a qual país?",Grécia,Groenlândia,Granada,
-Dachshund é um raça de…,Cachorro,Gato,Hamster,
-"Na bolsa de valores brasileira, qual sigla representa ações da Petrobras?",PETR4,PTBR4,PBRA4
-Kuala Lumpur é a capital de qual país?,Malásia,Sri Lanka,Papua-Nova Guiné
-Quando foi lançada a primeira versão do Adobe Photoshop?,1990,1996,2006
-"Qual foi o valor do primeiro salário mínimo em Reais, em 1994?","R$64,79","R$32,48","R$128,93"
-"Além dos bastonetes, os olhos humanos possuem células chamadas de…",Cones,Cubos,Cilindros
-A ONG Médicos sem Fronteiras é sediada em qual país?,Suíça,França,Estados Unidos
-Qual letra grega aparece ao lado do 'W' no logotipo da Wikipédia?,Ω (Ômega),Ф (Fi),μ (Mi)
-Qual destas constantes matemáticas possui o menor valor numérico?,Ф (Proporção áurea),e (Número de Euler),π (Pi)
-Em que ano foi fundada a Microsoft?,1975,1972,1978
-Qual marca produz o Bis?,Lacta,Nestlé,Arcor
-Qual é o nome do sistema desenvolvido para evitar a colisão de aviões no ar?,TCAS,DRS,AVOID
-"O sufixo ""-séptico"" na palavra ""antisséptico"" possui qual origem?",Grego,Latim,Indígena
-"O sucesso ""Rolling in the Deep"", de Adele, foi lançado em qual álbum?",21,19,25
-"""Aspirina"" é o nome comercial de qual medicamento?",Ácido acetilsalicílico,Ácido ascórbico,Ácido fólico
-Qual dessas empresas desenvolveu o avião de grande porte A380?,Airbus,Boeing,Embraer
-"Em inglês, como se chama as recargas de lapiseira?",Pencil lead,Pencil graphite,Pencil stick
-"Num carro, a injeção eletrônica substitui o...",Carburador,Câmbio manual,Radiador
-"Quem deu voz a Overjoyed, música lançada em 1985?",Stevie Wonder,Lionel Ritchie,Marvin Gaye
-"No hino nacional, o que significa (margens) ""plácidas""?",Tranquilas,Largas,Cristalinas
-Qual destes formatos de papel possui maior área?,Ofício,A4,Carta
-Medicamentos anti-histamínicos são geralmente usados para tratar o quê?,Alergias,Enjôos,Gases intestinais
-Quantos membros possui o grupo de k-pop BTS?,7,5,6
-Qual destes não é um tipo de maçã?,Prata,Gala,Fuji
-Qual era o nome da organização de serviços secretos da antiga União Soviética?,KGB,KLB,RGB
-Como se chama a primeira parte do intestino delgado?,Duodeno,Jejuno,Íleo
-Quem fez o gol do título da Espanha na final da Copa do Mundo de 2010?,Andrés Iniesta,Xavi,Puyol
-"Em janeiro de 2022, quantos espectadores levaram Casimiro ao recorde na Twich Brasil?",545 mil,557 mil,521 mil
-Qual foi o ano da realização do primeiro Rock in Rio no Brasil?,1985,1982,1984
-Robusta e Arábica são variedades de qual cultivo?,Café,Canela,Cana-de-açúcar
-"Quem interpretou a protagonista Maya, em Caminho das Índias?",Juliana Paes,Ísis Valverde,Dira Paes
-Qual a função principal do Microsoft Outlook?,Cliente de E-mail,Criação de planilhas,Edição de fotos
-Onde está localizado o oceano Ártico?,Hemisfério Norte,Hemisfério Sul,Na linha do equador
-Qual destas frequências de celular possui maior comprimento de onda?,700 MHz,1800 MHz,2600 MHz
-O número 60 possui quantos divisores?,12,8,16
-Quando se iniciou o reinado da Rainha Elizabeth II?,1952,1950,1948
-"O SR-71, avião mais rápido do mundo, teve seu voo inaugural em qual ano?",1964,1984,2004
-"Katakana, Hiragana, e Kanji são formas de escrita de qual linguagem?",Japonês,Coreano,Mandarim
-Quantos deputados compõem o congresso brasileiro?,513,613,713
-Durante quantos dias é celebrado o Chanucá—O Festival das Luzes judaico?,8,6,7
-"Qual é o menor estado brasileiro, em relação a sua área?",Sergipe,Espírito Santo,Alagoas
-Qual destas revoluções se iniciou em 1789?,Revolução Francesa,Revolução Inglesa,Revolução Industrial
-Qual Estado Nacional foi o pioneiro na expansão marítima e comercial atlântica?,Portugal,Espanha,Inglaterra
-Quais foram as colônias de exploração na América Inglesa?,Colônias do Sul,Colônias do Norte,Colônias Centrais
-Em qual destes países iniciou-se o Renascimento?,Itália,Portugal,Espanha
-Quem deu início à Reforma Protestante?,Martinho Lutero,Thomas Hobbes,João Calvino
-"Em que ano foi publicado o Manifesto Comunista, de Marx e Engels?",1848,1850,1832
-"Em 1733, qual produto os americanos jogaram ao mar em forma de protesto?",Chá,Açúcar,Páprica
-"Onde ocorreu a primeira derrota de Napoleão Bonaparte, em 1814?",Leipzig,Moscou,Kiev
-Quem foi o primeiro presidente dos Estados Unidos da América?,George Washington,Thomas Jefferson,John Adams
-"No século XIX, qual mercadoria os ingleses comercializavam ilegalmente na China?",Ópio,Máquinas e aparelhos elétricos,Bebidas alcoólicas
-Quais são as principais potências que formavam a Tríplice Aliança?,"Alemanha, Áustria-Hungria e Itália","Inglaterra, França e Rússia","Alemanha, Rússia e Itália"
-"Qual destes conflitos também é chamado de ""A Grande Guerra""",Primeira Guerra Mundial,Segunda Guerra Mundial,Guerra do Paraguai
-Em que país a crise de 1929 teve seu foco inicial?,EUA,Alemanha,Japão
-Onde ocorreu o período conhecido como “Bélle Époque”?,Na França,Na Itália,Na Grécia
-Em qual ano o partido fascista de Hitler ascendeu ao poder?,1933,1945,1940
-"Durante a Guerra Fria, quais foram os principais representantes do bloco capitalista e socialista, respectivamente?",EUA e URSS,EUA e Alemanha,Inglaterra e URSS
-Onde aconteceu o ataque de Pearl Harbor?,Havaí,Japão,"Washington, D.C."
-"Em que ano aconteceu a Revolução Cubana, liderada por Fidel Castro?",1959,1960,1961
-A abolição da escravatura no Brasil foi no ano:,1888,1892,1868
-“Tiradentes” é o apelido de:,Joaquim José da Silva Xavier,Joaquim Xavier da Silva,Joaquim José Xavier da Silva
-A Política do Café-com-Leite foi um acordo entre quais estados?,São Paulo e Minas Gerais,São Paulo e Rio de Janeiro,Rio de Janeiro e Minas Gerais
-A Revolta da Vacina ocorreu no Brasil em:,1904,1902,1900
-A mistura das cores subtrativas amarelo e ciano resultam em qual cor?,Verde,Laranja,Vermelho
-Como se chama o movimento de contração do coração?,Sístole,Diástole,Bombeamento
-Do que se alimentam os animais sapróvoros?,Plantas e animais mortos,Dejetos humanos,Pequenos insetos
-"O que é uma ""quilha""?",Uma peça de um navio,Uma peça de roupa,Uma comida típica
-Em qual ano Michael Schumacher conquistou seu último título de Fórmula 1?,2004,2002,2006
-A série de jogos Wolfenstein é baseada em qual conflito histórico?,Segunda Guerra Mundial,Primeira Guerra Mundial,Guerra Fria
-"Qual é o título do primeiro romance de Sherlock Holmes, publicado em 1887?",Um Estudo em Vermelho,O Signo dos Quatro,O Cão dos Baskervilles
-"Em qual edição dos jogos olímpicos Nadia Comăneci conquistou ""o dez perfeito""?",Montreal 1976,Moscou 1980,Los Angeles 1984
-Em que ano foi iniciada a montagem da estação espacial Mir?,1986,1980,1983
-"Em 2013, Anderson Silva fraturou sua perna na disputa contra qual lutador?",Chris Weidman,Chael Sonnen,Vitor Belfort
-"Em 2016, a rede social LinkedIn foi adquirida por qual empresa?",Microsoft,Alphabet (Google),Meta (Facebook)
-Qual dessas alternativas não é um Pokémon?,Hekaton,Feebas,Delibird
-"O que significa ""mtDNA""?",DNA mitocondrial,Multi DNA,Meta-DNA
-Qual é o nome do ex-marido de Dona Hermínia em Minha Mãe é uma Peça?,Carlos Alberto,João Carlos,Carlos Eduardo
-Qual destas cobras não é venenosa?,Caninana,Surucucu pico-de-jaca,Jararaca
-Qual destas doenças não é transmitida pelo mosquito?,Doença de Chagas,Malária,Febre amarela
-Lentes divergentes são indicadas para corrigir qual condição?,Miopia,Hipermetropia,Astigmatismo
-"Como se classifica a tonicidade silábica da palavra ""Álcool""?",Proparoxítona,Oxítona,Paroxítona
+text,correct_alternative,incorrect_alternative1,incorrect_alternative2
+Onde nasceu Ivete Sangalo?,"Juazeiro, BA","Salvador, BA","Itabuna, BA"
+Taenia solium e Taenia saginata são parasitas também conhecidos como...,Solitária,Lombriga,Oxiúro
+A Bundesliga é a liga profissional de futebol de qual país?,Alemanha,França,Inglaterra
+"Quem escrebveu a Ilíada, um dos principais poemas épicos da Grécia Antiga?",Homero,Tucídides,Dionísio
+Qual destas estrelas se encontra mais próxima do nosso sistema solar?,Proxima Centauri,Sirius A,Betelgeuse
+Qual é a cor do cabelo da personagem Marge Simpson?,Azul,Rosa,Verde
+Qual era o nome completo de Luís de Camões?,Luís Vaz de Camões,Luís Silva de Camões,Luís Gomes de Camões
+"""Poliestireno"" é um plástico também conhecido como...",Isopor,Vinil,Acrílico
+Qual é o estado dos EUA de maior área?,Alasca,Texas,Califórnia
+Qual esporte é praticado no Torneio de Wimbledon?,Tênis,Ciclismo,Natação
+Quantas cores estão presentes na bandeira do Brasil?,4,5,6
+"Haley, Alex, e Luke são personagens de qual série americana?",Modern Family,The Big Bang Theory,Brooklyn 99
+Curling é um esporte praticado em qual superfície?,Gelo,Grama,Areia
+O jogo Counter-Strike: Global Offensive foi publicado por qual estúdio?,Valve Corporation,EA Games,Ubisoft
+Qual país produziu a primeira versão do reality show Big Brother?,Holanda,Estados Unidos,Portugal
+Stefani Germanotta é o nome real de qual artista?,Lady Gaga,Gwen Stefani,Cher
+"Qual destes é conhecido como ""colesterol bom""?",HDL,LDL,VLDL
+"Destruído em 2020, onde ficava localizado o Radiotelescópio de Arecibo?",Porto Rico,Peru,Guatemala
+Qual destes personagens foi interpretado por Paul Bettany nos filmes da Marvel?,Visão,Gavião Arqueiro,Homem-Formiga
+Um ânion é um íon de carga…,Negativa,Positiva,Neutra
+A família do Real já abrangeu moedas de quantos valores diferentes?,6,5,7
+"Em 2013, qual destes jornais foi comprado por Jeff Bezos, fundador da Amazon?",The Washington Post,The New York Times,The Wall Street Journal
+Quantos anos dura o mandato de um senador no Brasil?,8,6,4
+Coulomb é uma unidade de medida de qual grandeza?,Carga elétrica,Claridade,Dureza
+Qual desses títulos não pertence a Daenerys Targaryen?,Nascida do Sol,Khaleesi dos Dothraki,Não Queimada
+Qual escola de samba é conhecida pelo símbolo da águia?,Portela,Salgueiro,Mangueira
+Quantos pares de cromossomos existem no DNA humano?,23,22,21
+O médico nefrologista é especialista em qual parte do corpo?,Rins,Nervos,Tireóide
+Qual destas atrizes brasileiras já foi indicada ao Óscar?,Fernanda Montenegro,Marieta Severo,Patrícia Pillar
+Qual ator interpreta o personagem Tufão em Avenida Brasil?,Murilo Benício,Miguel Falabella,Alexandre Borges
+"Além de laranja e verde, quais cores compunham o logotipo do Windows XP?",Azul e Amarelo,Azul e Vermelho,Vermelho e Amarelo
+"Helvetica, Garamond, e Avenir são nomes do quê?",Fontes (tipográficas),Modelos de carro,Digimons
+Onde nasceu o velocista Usain Bolt?,Jamaica,África do Sul,Quênia
+Qual personagem teve a primeira fala em Star Wars: Uma Nova Esperança (1977)?,C-3PO,Princesa Leia,Luke Skywalker
+Qual é o nome do diretor de Bastardos Inglórios?,Quentin Tarantino,Christopher Nolan,Martin Scorsese
+"Ao final de The Office, quem permaneceu CEO da Dunder Mifflin?",David Wallace,Charles Miner,Andy Bernard
+O estado cuja capital é Teresina fica em qual região do Brasil?,Nordeste,Norte,Centro-oeste
+Como se chama o caranguejo personagem de A Pequena Sereia?,Sebastião,Sabidão,Benjamin
+"A campanha ""Pôneis Malditos"", veiculada em 2011, promovia qual produto?",Uma picape,Uma bebida,Um brinquedo
+Qual destes não é o nome de um ônibus espacial?,Ascender,Endeavour,Atlantis
+Qual país é conhecido por ter formato de uma bota?,Itália,Grécia,Egito
+"Em Breaking Bad, Walter White dava aulas de qual matéria?",Química,Física,Geografia
+Qual é o nome da residência oficial do vice-presidente da república no Brasil?,Palácio do Jaburu,Palácio da Alvorada,Palácio do Planalto
+Como se chama o filme que conta a história do matemático John Nash?,Uma Mente Brilhante,A Teoria de Tudo,Gênio Indomável
+Qual ator interpretou James Bond em mais filmes?,Roger Moore,Daniel Craig,Pierce Brosnan

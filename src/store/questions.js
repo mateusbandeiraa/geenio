@@ -6,7 +6,7 @@ import Papa from "papaparse";
 
 const tomorrow = dayjs().add(1, "day").startOf("day");
 // First game went live on jan 20th 2022.
-const gameNumber = dayjs().diff(dayjs("2022-01-20"), "days") + 1;
+const gameNumber = 48; //dayjs().diff(dayjs("2022-01-20"), "days") + 1;
 export const questions = {
   state: () => ({
     nextGameDate: tomorrow,
@@ -29,7 +29,7 @@ export const questions = {
       const maxDays = Math.floor(totalQuestions / 5); // 5 questions per day
       let gameNumber = state.gameNumber - 1; // Games are 1-indexed but maths here are easier with zero-indexing
 
-      gameNumber-=24; // I changed the questions on the 24th game so I wanted to start over.
+      gameNumber-=48; // I changed the questions on the 48th game so I wanted to start over.
       const cycleNumber = Math.floor(gameNumber / maxDays); // How many times we cycled through all questons
 
       const gameNumberInCycle = gameNumber - (cycleNumber * maxDays);
