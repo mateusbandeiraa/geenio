@@ -6,7 +6,7 @@ import Papa from "papaparse";
 
 const tomorrow = dayjs().add(1, "day").startOf("day");
 // First game went live on jan 20th 2022.
-const gameNumber = 48; //dayjs().diff(dayjs("2022-01-20"), "days") + 1;
+const gameNumber = dayjs().diff(dayjs("2022-01-20"), "days") + 1;
 export const questions = {
   state: () => ({
     nextGameDate: tomorrow,
