@@ -29,7 +29,7 @@ export const questions = {
       const maxDays = Math.floor(totalQuestions / 5); // 5 questions per day
       let gameNumber = state.gameNumber - 1; // Games are 1-indexed but maths here are easier with zero-indexing
 
-      gameNumber-=48; // I changed the questions on the 48th game so I wanted to start over.
+      gameNumber-=57; // I changed the questions on the 48th game so I wanted to start over.
       const cycleNumber = Math.floor(gameNumber / maxDays); // How many times we cycled through all questons
 
       const gameNumberInCycle = gameNumber - (cycleNumber * maxDays);
