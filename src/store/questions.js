@@ -1,6 +1,6 @@
 import Question from "../model/Question";
 import questionsCSV from "!raw-loader!../assets/questions.csv";
-import { shuffle } from "shuffle-seed";
+import { shuffle, simpleHash } from "../util/shuffle-seed";
 import dayjs from "dayjs";
 import Papa from "papaparse";
 
@@ -29,16 +29,16 @@ export const questions = {
       const maxDays = Math.floor(totalQuestions / 5); // 5 questions per day
       let gameNumber = state.gameNumber - 1; // Games are 1-indexed but maths here are easier with zero-indexing
 
-      gameNumber-=57; // I changed the questions on the 48th game so I wanted to start over.
+      gameNumber -= 57; // I changed the questions on the 48th game so I wanted to start over.
       const cycleNumber = Math.floor(gameNumber / maxDays); // How many times we cycled through all questons
 
-      const gameNumberInCycle = gameNumber - (cycleNumber * maxDays);
-      const firstQuestionIndex = (gameNumberInCycle) * 5;
+      const gameNumberInCycle = gameNumber - cycleNumber * maxDays;
+      const firstQuestionIndex = gameNumberInCycle * 5;
 
       /* If I want to force the change of the order of the questions,
        * I can create a new deploy with a different salt. */
-      const shuffleSalt = 'NaCl';
-      const hash = cycleNumber.toString(2) + shuffleSalt;
+      const shuffleSalt = "CaSO4";
+      const hash = simpleHash(cycleNumber.toString(2) + shuffleSalt);
 
       const todaysQuestions = shuffle(allQuestions, hash)
         .slice(firstQuestionIndex, firstQuestionIndex + 5)
