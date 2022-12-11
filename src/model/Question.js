@@ -1,4 +1,4 @@
-import { shuffle } from "shuffle-seed";
+import { shuffle, simpleHash } from "../util/shuffle-seed";
 export default class Question {
   selectedAlternative;
   constructor({
@@ -17,8 +17,12 @@ export default class Question {
     );
 
     // If all alternatives are numeric values, we want to display them in order.
-    if(this.alternatives.every(value => {return !isNaN(value)})){
-      this.alternatives = this.alternatives.sort((a, b) => (a - b));
+    if (
+      this.alternatives.every((value) => {
+        return !isNaN(value);
+      })
+    ) {
+      this.alternatives = this.alternatives.sort((a, b) => a - b);
     }
 
     this.correctAlternative = correct_alternative;
@@ -46,18 +50,3 @@ export default class Question {
     return this.alternatives.indexOf(alternative);
   }
 }
-
-// This is a simple, *insecure* hash that's short, fast, and has no dependencies.
-// For algorithmic use, where security isn't needed, it's way simpler than sha1 (and all its deps)
-// or similar, and with a short, clean (base 36 alphanumeric) result.
-// Loosely based on the Java version; see
-// https://stackoverflow.com/questions/6122571/simple-non-secure-hash-function-for-javascript
-const simpleHash = (str) => {
-  let hash = 0;
-  for (let i = 0; i < str.length; i++) {
-    const char = str.charCodeAt(i);
-    hash = (hash << 5) - hash + char;
-    hash &= hash; // Convert to 32bit integer
-  }
-  return new Uint32Array([hash])[0].toString(36);
-};
